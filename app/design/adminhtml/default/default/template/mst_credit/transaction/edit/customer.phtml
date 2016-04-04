@@ -1,0 +1,72 @@
+<?php
+$_grid       = $this->getGridBlock();
+$_massAction = $_grid->getMassactionBlock();
+?>
+<?php echo $_grid->toHtml() ?>
+
+<script type="text/javascript">
+    var selectedCustomers = new Hash();
+    $('customer_id').value = selectedCustomers.toQueryString();
+
+    function registerCustomer(grid, element, checked)
+    {
+        if(checked){
+            selectedCustomers.set(element.value, true);
+            <?php echo $_massAction->getJsObjectName() ?>.setCheckbox(element);
+        } else{
+            selectedCustomers.unset(element.value);
+            <?php echo $_massAction->getJsObjectName() ?>.setCheckbox(element);
+        }
+        console.log(<?php echo $_massAction->getJsObjectName() ?>.checkedString);
+        $('customer_id').value = <?php echo $_massAction->getJsObjectName() ?>.checkedString;
+
+        grid.reloadParams = {'customer_id[]':selectedCustomers.keys()};
+    }
+
+    function customerRowClick(grid, event)
+    {
+        var trElement = Event.findElement(event, 'tr');
+        var isInput   = Event.element(event).tagName == 'INPUT';
+        if(trElement){
+            var checkbox = Element.getElementsBySelector(trElement, 'input');
+            if(checkbox[0]){
+                var checked = isInput ? checkbox[0].checked : !checkbox[0].checked;
+                <?php echo $_grid->getJsObjectName() ?>.setCheckboxChecked(checkbox[0], checked);
+            }
+        }
+    }
+
+Event.observe(window, 'load', function() {
+    <?php echo $_grid->getJsObjectName() ?>.rowClickCallback      = customerRowClick;
+    <?php echo $_grid->getJsObjectName() ?>.checkboxCheckCallback = registerCustomer;
+
+    <?php echo $_massAction->getJsObjectName() ?>._selectAll = <?php echo $_massAction->getJsObjectName() ?>.selectAll;
+    <?php echo $_massAction->getJsObjectName() ?>.selectAll = function () {
+        <?php echo $_massAction->getJsObjectName() ?>._selectAll();
+        $('customer_id').value = <?php echo $_massAction->getJsObjectName() ?>.getCheckedValues();
+        return false;
+    };
+
+    <?php echo $_massAction->getJsObjectName() ?>._unselectAll = <?php echo $_massAction->getJsObjectName() ?>.unselectAll;
+    <?php echo $_massAction->getJsObjectName() ?>.unselectAll = function () {
+        <?php echo $_massAction->getJsObjectName() ?>._unselectAll();
+        $('customer_id').value = <?php echo $_massAction->getJsObjectName() ?>.getCheckedValues();
+        return false;
+    };
+
+    <?php echo $_massAction->getJsObjectName() ?>._selectVisible = <?php echo $_massAction->getJsObjectName() ?>.selectVisible;
+    <?php echo $_massAction->getJsObjectName() ?>.selectVisible = function () {
+        <?php echo $_massAction->getJsObjectName() ?>._selectVisible();
+        $('customer_id').value = <?php echo $_massAction->getJsObjectName() ?>.getCheckedValues();
+        return false;
+    };
+
+    <?php echo $_massAction->getJsObjectName() ?>._unselectVisible = <?php echo $_massAction->getJsObjectName() ?>.unselectVisible;
+    <?php echo $_massAction->getJsObjectName() ?>.unselectVisible = function() {
+        <?php echo $_massAction->getJsObjectName() ?>._unselectVisible();
+        $('customer_id').value = <?php echo $_massAction->getJsObjectName() ?>.getCheckedValues();
+        return false;
+    }
+});
+
+</script>

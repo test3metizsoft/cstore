@@ -1,0 +1,22 @@
+<?php
+/*
+ * @var SM_XPos_Block_Adminhtml_XPos_Receipt_Fore $this
+ */
+    $var = $this->getParentBlock()->_viewVars;
+    $printeGift = $var['printGift'];
+?>
+<div class="footer">
+    <!--<div class="highlight">ITEMS SOLD # 4</div>-->
+    <div class="separate">----------***----------</div>
+    <div><?php
+            if ($printeGift)
+                echo $this->getGiftFore();
+            else
+                echo $this->getForeMessage(); ?></div>
+    <div><a href="#">www.CstoreMaster.com</a></div>
+</div>
+<div style="text-align: center;padding: 10px">
+    <div style="border: 1px solid #000">
+        <?php echo $this->getTermNCondition (); ?>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<?php
+$_balance = $this->getBalance();
+?>
+<?php if ($_balance && $_balance->getAmount() > 0): ?>
+<p><?php echo Mage::helper('credit')->__('Your current balance is: <b>%s</b>',
+            Mage::helper('core')->currency($_balance->getAmount())) ?></p>
+
+<?php if ($this->getUsedAmount() == 0): ?>
+<button type="button" class="button" id="apply_credit_btn">
+    <span><span>
+        <?php echo Mage::helper('credit')->__('Use Store Credit (%s)',
+            strip_tags(Mage::helper('core')->currency($this->getAmountToUse()))) ?>
+    </span></span>
+</button>
+<?php else: ?>
+<button type="button" class="button" id="cancel_credit_btn">
+    <span><span><?php echo Mage::helper('credit')->__('Cancel') ?></span></span>
+</button>
+<?php endif ?>
+<br>
+<br>
+
+<?php endif ?>

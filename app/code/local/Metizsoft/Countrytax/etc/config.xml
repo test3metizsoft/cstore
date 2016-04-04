@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<config>
+ 
+    <modules>
+        <Metizsoft_Countrytax>
+            <version>0.1.0</version>
+        </Metizsoft_Countrytax>
+    </modules>
+ 
+    <global>
+        <blocks>
+            <checkout>
+                <rewrite>
+                    <cart_item_renderer>Metizsoft_Countrytax_Block_Cart_Item_Renderer</cart_item_renderer>
+                </rewrite>
+            </checkout>
+        </blocks>   
+       
+        <models>
+          <!-- may not need this here since the only model class is a rewrite -->
+            <countrytax>
+                <class>Metizsoft_Countrytax_Model</class>
+            </countrytax>
+          <!-- definately need this! -->
+            <!--<sales>
+                <rewrite>
+                    <quote_item>Metizsoft_Countrytax_Model_Quote_Item</quote_item>
+                </rewrite>
+            </sales>-->
+        </models>
+        <!--<events>
+            <review_controller_product_init_before>
+                <observers>
+                    <metizsoft_countrytax_model_observer>
+                        <type>singleton</type>
+                        <class>Metizsoft_Countrytax_Model_Observer</class>
+                        <method>implementOrderStatus</method>
+                    </metizsoft_countrytax_model_observer>
+                </observers>
+            </review_controller_product_init_before>
+        </events>-->
+    </global>
+ 
+</config>

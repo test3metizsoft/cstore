@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_Pdfinvoiceplus
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<config>
+    <menu>
+        <pdfinvoiceplus module="pdfinvoiceplus" translate="title">
+            <title>PDF Invoice Plus</title>
+            <sort_order>71</sort_order>
+            <children>
+                <pdfinvoiceplus module="pdfinvoiceplus" translate="title">
+                    <title>Manage Templates</title>
+                    <sort_order>0</sort_order>
+                    <action>pdfinvoiceplusadmin/adminhtml_pdfinvoiceplus</action>
+                </pdfinvoiceplus>
+                <settings module="pdfinvoiceplus" translate="title">
+                    <title>Settings</title>
+                    <sort_order>1000</sort_order>
+                    <action>adminhtml/system_config/edit/section/pdfinvoiceplus</action>
+                </settings>
+            </children>
+        </pdfinvoiceplus>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <pdfinvoiceplus module="pdfinvoiceplus" translate="title">
+                                        <title>Pdfinvoiceplus</title>
+                                        <sort_order>71</sort_order>
+                                    </pdfinvoiceplus>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <pdfinvoiceplus module="pdfinvoiceplus" translate="title">
+                        <title>Pdfinvoiceplus</title>
+                        <sort_order>71</sort_order>
+                        <children>
+                            <pdfinvoiceplus module="pdfinvoiceplus" translate="title">
+                                <title>Manage Templates</title>
+                                <sort_order>0</sort_order>
+                            </pdfinvoiceplus>
+                            <settings module="pdfinvoiceplus" translate="title">
+                                <title>Settings</title>
+                                <sort_order>1000</sort_order>
+                            </settings>
+                        </children>
+                    </pdfinvoiceplus>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,11 @@
+<div class="page-title">
+    <h1><?php echo Mage::helper('credit')->__('Store Credit') ?></h1>
+</div>
+
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+<?php echo $this->getChildHtml('balance') ?>
+
+<?php echo $this->getChildHtml('send_to_friend') ?>
+
+<?php echo $this->getChildHtml('transactions') ?>

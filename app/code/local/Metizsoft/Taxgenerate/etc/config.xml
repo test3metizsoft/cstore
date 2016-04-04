@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Metizsoft_Taxgenerate extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Metizsoft
+ * @package        Metizsoft_Taxgenerate
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <modules>
+        <Metizsoft_Taxgenerate>
+            <version>1.0.1</version>
+        </Metizsoft_Taxgenerate>
+    </modules>
+    <global>
+        <resources>
+            <metizsoft_taxgenerate_setup>
+                <setup>
+                    <module>Metizsoft_Taxgenerate</module>
+                    <class>Metizsoft_Taxgenerate_Model_Resource_Setup</class>
+                </setup>
+            </metizsoft_taxgenerate_setup>
+        </resources>
+        <blocks>
+            <metizsoft_taxgenerate>
+                <class>Metizsoft_Taxgenerate_Block</class>
+            </metizsoft_taxgenerate>
+        </blocks>
+        <helpers>
+            <metizsoft_taxgenerate>
+                <class>Metizsoft_Taxgenerate_Helper</class>
+            </metizsoft_taxgenerate>
+        </helpers>
+        <models>
+            <metizsoft_taxgenerate>
+                <class>Metizsoft_Taxgenerate_Model</class>
+                <resourceModel>metizsoft_taxgenerate_resource</resourceModel>
+            </metizsoft_taxgenerate>
+            <metizsoft_taxgenerate_resource>
+                <class>Metizsoft_Taxgenerate_Model_Resource</class>
+                <entities>
+                    <statetax>
+                        <table>metizsoft_taxgenerate_statetax</table>
+                    </statetax>
+                    <countylist>
+                        <table>metizsoft_taxgenerate_countylist</table>
+                    </countylist>
+                    <countytax>
+                        <table>metizsoft_taxgenerate_countytax</table>
+                    </countytax>
+                    <citylist>
+                        <table>metizsoft_taxgenerate_citylist</table>
+                    </citylist>
+                    <citytax>
+                        <table>metizsoft_taxgenerate_citytax</table>
+                    </citytax>
+                    <myreport>
+                        <table>metizsoft_taxgenerate_myreport</table>
+                    </myreport>
+                    <statetax_store>
+                        <table>metizsoft_taxgenerate_statetax_store</table>
+                    </statetax_store>
+                    <countylist_store>
+                        <table>metizsoft_taxgenerate_countylist_store</table>
+                    </countylist_store>
+                    <countytax_store>
+                        <table>metizsoft_taxgenerate_countytax_store</table>
+                    </countytax_store>
+                    <citylist_store>
+                        <table>metizsoft_taxgenerate_citylist_store</table>
+                    </citylist_store>
+                    <citytax_store>
+                        <table>metizsoft_taxgenerate_citytax_store</table>
+                    </citytax_store>
+                    
+                </entities>
+            </metizsoft_taxgenerate_resource>
+            <sales>
+                <rewrite>
+                    <quote_item>Metizsoft_Taxgenerate_Model_Quote_Item</quote_item>
+                </rewrite>
+            </sales>
+        </models>
+        <events>
+            <checkout_submit_all_after>
+                <observers>
+                    <metizsoft_taxgenerate_model_observer>
+                        <type>singleton</type>
+                        <class>Metizsoft_Taxgenerate_Model_Observer</class>
+                        <method>setorderstatetax</method>
+                    </metizsoft_taxgenerate_model_observer>
+                </observers>
+            </checkout_submit_all_after>
+            <sales_order_invoice_pay>
+                <observers>
+                    <metizsoft_taxgenerate_model_observer>
+                        <type>singleton</type>
+                        <class>Metizsoft_Taxgenerate_Model_Observer</class>
+                        <method>setinvoicestatetax</method>
+                    </metizsoft_taxgenerate_model_observer>
+                </observers>
+            </sales_order_invoice_pay>
+            <customer_login>
+                <observers>
+                    <metizsoft_taxgenerate_customer_login>
+                        <type>model</type>
+                        <class>Metizsoft_Taxgenerate_Model_Observer</class>
+                        <method>customerLogin</method>
+                    </metizsoft_taxgenerate_customer_login>
+                </observers>
+            </customer_login>
+        </events>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <metizsoft_taxgenerate>
+                    <file>metizsoft_taxgenerate.xml</file>
+                </metizsoft_taxgenerate>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Metizsoft_Taxgenerate>
+                    <files>
+                        <default>Metizsoft_Taxgenerate.csv</default>
+                    </files>
+                </Metizsoft_Taxgenerate>
+            </modules>
+        </translate>
+    </adminhtml>
+	<frontend>
+        <routers>
+            <metizsoft_taxgenerate>
+                <use>standard</use>
+                <args>
+                    <module>Metizsoft_Taxgenerate</module>
+                    <frontName>getcitys</frontName>
+                </args>
+            </metizsoft_taxgenerate>
+        </routers>
+    </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Metizsoft_Taxgenerate before="Mage_Adminhtml">Metizsoft_Taxgenerate_Adminhtml</Metizsoft_Taxgenerate>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

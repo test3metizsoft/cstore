@@ -1,0 +1,44 @@
+<?php
+$_balance = $this->getBalance();
+?>
+<?php if ($_balance && $_balance->getAmount() > 0): ?>
+<form id="credit-form" action="<?php echo Mage::getUrl('credit/checkout/applyPost') ?>" method="post">
+    <div class="discount">
+        <h2><?php echo Mage::helper('credit')->__('Use Store Credit') ?></h2>
+        <div class="discount-form">
+            <p><?php echo Mage::helper('credit')->__('Your current balance is: <b>%s</b>',
+                        Mage::helper('core')->currency($_balance->getAmount())) ?></p>
+
+            <input type="hidden" name="remove-credit" id="remove-credit" value="0">
+
+            <div class="buttons-set">
+                <?php if ($this->getUsedAmount() == 0 && $this->getAmountToUse() > 0): ?>
+                <button type="button" class="button" onclick="creditForm.submit(false)">
+                    <span><span>
+                        <?php echo Mage::helper('credit')->__('Use Store Credit (%s)',
+                            strip_tags(Mage::helper('core')->currency($this->getAmountToUse()))) ?>
+                    </span></span>
+                </button>
+                <?php elseif ($this->getUsedAmount() > 0): ?>
+                <button type="button" class="button" onclick="creditForm.submit(true)">
+                    <span><span><?php echo Mage::helper('credit')->__('Cancel') ?></span></span>
+                </button>
+                <?php endif ?>
+             </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+var creditForm = new VarienForm('credit-form');
+creditForm.submit = function (isRemove) {
+    if (isRemove) {
+        $('remove-credit').value = "1";
+    } else {
+        $('remove-credit').value = "0";
+    }
+    return VarienForm.prototype.submit.bind(creditForm)();
+}
+//]]>
+</script>
+<?php endif ?>

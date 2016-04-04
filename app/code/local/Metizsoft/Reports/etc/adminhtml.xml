@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <report>
+            <children>
+                <salesroot translate="title">
+                    <children>
+                        <metizsoft_reports_state translate="title">
+                            <title>State Tax Reports</title>
+                           <action>adminhtml/metizsoft_reports/statereport</action>
+                            <sort_order>150</sort_order>
+                        </metizsoft_reports_state>
+                        <metizsoft_reports translate="title">
+                            <title>County Tax Reports</title>
+                             <action>adminhtml/metizsoft_reports/countyreport</action>
+                            <sort_order>160</sort_order>
+                        </metizsoft_reports>
+                        <metizsoft_reports_city translate="title">
+                            <title>City Tax Reports</title>
+                            <action>adminhtml/metizsoft_reports/cityreport</action>
+                            <sort_order>170</sort_order>
+                        </metizsoft_reports_city>
+                        
+                    </children>
+                </salesroot>
+            </children>
+        </report>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <metizsoft_reports>
+                                        <title>County Tax Reports</title>
+                                    </metizsoft_reports>
+                                     <metizsoft_reports_state translate="title">
+                                        <title>State Tax Reports</title>
+                                    </metizsoft_reports_state>
+                                    <metizsoft_reports_city translate="title">
+                                        <title>City Tax Reports</title>
+                                    </metizsoft_reports_city>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <report>
+                        <children>
+                            <salesroot>
+                                <children>
+                                    <metizsoft_reports translate="title">
+                                        <title>Metizsoft Custom Reports</title>
+                                        <children>
+                                            <view translate="title">
+                                                <title>View</title>
+                                            </view>
+                                        </children>
+                                    </metizsoft_reports>
+                                </children>
+                            </salesroot>
+                        </children>
+                    </report>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

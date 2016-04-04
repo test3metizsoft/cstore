@@ -1,0 +1,13 @@
+<?php $_source  = $this->getSource() ?>
+<?php $this->setPriceDataObject($_source) ?>
+
+<?php if ((float) $_source->getCreditAmount()): ?>
+    <tr>
+        <td class="label">
+            <?php echo Mage::helper('credit')->__('Store Credit') ?>
+        </td>
+        <td>
+            <?php echo $this->displayPrices(-$_source->getBaseCreditAmount(), -$_source->getCreditAmount()); ?>
+        </td>
+    </tr>
+<?php endif; ?>

@@ -1,0 +1,12 @@
+a:4:{i:0;s:63:"SQLSTATE[HY000]: General error: 2006 MySQL server has gone away";i:1;s:1469:"#0 /home/cstoremaster/public_html/lib/Zend/Db/Adapter/Pdo/Abstract.php(305): PDO->beginTransaction()
+#1 /home/cstoremaster/public_html/lib/Zend/Db/Adapter/Abstract.php(496): Zend_Db_Adapter_Pdo_Abstract->_beginTransaction()
+#2 /home/cstoremaster/public_html/lib/Varien/Db/Adapter/Pdo/Mysql.php(226): Zend_Db_Adapter_Abstract->beginTransaction()
+#3 /home/cstoremaster/public_html/app/code/core/Mage/Core/Model/Resource/Abstract.php(76): Varien_Db_Adapter_Pdo_Mysql->beginTransaction()
+#4 /home/cstoremaster/public_html/app/code/core/Mage/Core/Model/Abstract.php(313): Mage_Core_Model_Resource_Abstract->beginTransaction()
+#5 /home/cstoremaster/public_html/app/code/core/Mage/Cron/Model/Observer.php(335): Mage_Core_Model_Abstract->save()
+#6 /home/cstoremaster/public_html/app/code/core/Mage/Cron/Model/Observer.php(72): Mage_Cron_Model_Observer->_processJob(Object(Mage_Cron_Model_Schedule), Object(Mage_Core_Model_Config_Element))
+#7 /home/cstoremaster/public_html/app/code/core/Mage/Core/Model/App.php(1338): Mage_Cron_Model_Observer->dispatch(Object(Varien_Event_Observer))
+#8 /home/cstoremaster/public_html/app/code/core/Mage/Core/Model/App.php(1317): Mage_Core_Model_App->_callObserverMethod(Object(Mage_Cron_Model_Observer), 'dispatch', Object(Varien_Event_Observer))
+#9 /home/cstoremaster/public_html/app/Mage.php(448): Mage_Core_Model_App->dispatchEvent('default', Array)
+#10 /home/cstoremaster/public_html/cron.php(76): Mage::dispatchEvent('default')
+#11 {main}";s:11:"script_name";s:0:"";s:4:"skin";s:5:"admin";}

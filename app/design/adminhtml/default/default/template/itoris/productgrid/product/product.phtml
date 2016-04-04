@@ -1,0 +1,153 @@
+<?php 
+/**
+ * ITORIS
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the ITORIS's Magento Extensions License Agreement
+ * which is available through the world-wide-web at this URL:
+ * http://www.itoris.com/magento-extensions-license.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to sales@itoris.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extensions to newer
+ * versions in the future. If you wish to customize the extension for your
+ * needs please refer to the license agreement or contact sales@itoris.com for more information.
+ *
+ * @category   ITORIS
+ * @package    ITORIS_PRODUCTGRID
+ * @copyright  Copyright (c) 2012 ITORIS INC. (http://www.itoris.com)
+ * @license    http://www.itoris.com/magento-extensions-license.html  Commercial License
+ */
+?>
+<?php /** @var $this Mage_Adminhtml_Block_Catalog_Product */ ?>
+<?php
+	/** @var $helper Itoris_ProductGrid_Helper_Grid */
+	$helper = Mage::helper('itoris_productgrid/grid');
+	$isEnabledAdvancedGrid = $helper->isEnabled();
+	if ($isEnabledAdvancedGrid) {
+		$this->addButton('configure_grid', array(
+			'label'   => $helper->__('Configure Product Grid'),
+			'onclick' => 'itorisProductGrid.openConfigWindow();',
+			'class'   => ''
+		), 0, 1);
+		echo $this->getChildHtml('itoris_gallery');
+	}
+?>
+<div class="content-header">
+	<table cellspacing="0">
+		<tr>
+			<td style="width:50%;"><h3 class="icon-head head-products"><?php echo $isEnabledAdvancedGrid ? $helper->__('Advanced Product Grid') : Mage::helper('catalog')->__('Manage Products') ?></h3></td>
+			<td class="a-right">
+				<?php echo $this->getButtonsHtml() ?>
+			</td>
+		</tr>
+	</table>
+</div>
+<?php if (!$this->isSingleStoreMode() && (!$isEnabledAdvancedGrid || (int)$helper->getConfigValue('show_scope'))): ?>
+	<?php echo $this->getChildHtml('store_switcher');?>
+<?php endif;?>
+<div>
+	<?php echo $this->getGridHtml() ?>
+</div>
+
+<?php if ($isEnabledAdvancedGrid): ?>
+	<div id="itoris_productgrid_mask" style="display: none;"></div>
+	<div id="itoris_productgrid_config" style="display: none;">
+		<div class="itoris_productgrid_header">
+			<div class="itoris_productgrid_close"></div>
+			<span><?php echo $helper->__('Product Grid Configuration') ?></span>
+		</div>
+		<form method="post" action="<?php echo $this->getUrl('itoris_productgrid/admin_grid/saveConfig', array('_current' => true)) ?>">
+			<input type="hidden" name="form_key" value="<?php echo $this->getFormKey() ?>" />
+			<input type="hidden" name="itoris_productgrid_flag" value="1"/>
+			<ul class="itoris_productgrid_config_content">
+				<li class="itoris_productgrid_config_section">
+					<?php echo $helper->__('General Options') ?>
+					<ul>
+						<?php foreach ($helper->getGeneralOptions() as $option): ?>
+							<li>
+								<?php if (isset($option['values'])): ?>
+									<label for="iopt_<?php echo $option['code'] ?>"><?php echo $option['label'] ?>:</label>
+									<select name="general_options[<?php echo $option['code'] ?>]" value="<?php echo $option['value'] ?>" id="iopt_<?php echo $option['code'] ?>">
+										<?php foreach ($option['values'] as $value): ?>
+											<option value="<?php echo $value['value'] ?>" <?php if ($value['value'] == $option['value']):?>selected="selected"<?php endif; ?>><?php echo $value['label'] ?></option>
+										<?php endforeach; ?>
+									</select>
+								<?php else: ?>
+									<input type="checkbox" name="general_options[<?php echo $option['code'] ?>]" <?php if ($option['checked']):?>checked="checked"<?php endif; ?>
+										   value="1" id="iopt_<?php echo $option['code'] ?>"
+										<?php if (isset($option['dependent'])): ?>
+											onclick="ItorisHelper.toggleDependent(this, 'iopt_<?php echo $option['dependent'] ?>');"
+										<?php endif; ?>
+										<?php if (isset($option['disabled']) && $option['disabled']): ?>
+										   disabled="disabled"
+										<?php endif; ?>
+									/>
+									<label for="iopt_<?php echo $option['code'] ?>"><?php echo $option['label'] ?></label>
+								<?php endif; ?>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				</li>
+				<li class="itoris_productgrid_config_section">
+					<?php echo $helper->__('Show Attributes') ?>
+					<ul>
+						<?php foreach ($helper->getProductAttributes() as $attribute): ?>
+							<?php if (empty($attribute)): ?>
+								<li></li>
+							<?php continue; endif; ?>
+							<li>
+								<input type="checkbox" name="attributes[<?php echo $attribute['attribute_code'] ?>]" <?php if ($attribute['checked']):?>checked="checked"<?php endif; ?> value="1" id="opt_<?php echo $attribute['attribute_code'] ?>"/>
+								<label for="opt_<?php echo $attribute['attribute_code'] ?>"><?php echo $attribute['label'] ?></label>
+							</li>
+							<?php if (isset($attribute['last_in_group'])): ?>
+								<li style="width: 100%;height:1px;border-bottom: 1px solid #999999;"></li>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					</ul>
+				</li>
+				<li class="itoris_productgrid_config_buttons">
+					<button class="scalable reset itoris_productgrid_button_left" type="button"><span><?php echo $helper->__('Reset to Defaults') ?></span></button>
+					<button class="scalable save itoris_productgrid_button_right" type="submit"><span><?php echo $helper->__('Apply Configuration') ?></span></button>
+					<button class="scalable close itoris_productgrid_button_right" type="button"><span><?php echo $helper->__('Cancel') ?></span></button>
+				</li>
+			</ul>
+		</form>
+	</div>
+	<div id="mass_apply_changes" style="display: none;">
+		<div class="mask"></div>
+		<div class="controls">
+			<span class="note"><?php echo $this->__('Changes have not been applied yet') ?></span>
+			<button class="button apply-changes" type="button"><span><span><?php echo $this->__('Apply Changes') ?></span></span></button>
+			<button class="button discard-changes" type="button"><span><span><?php echo $this->__('Discard All Changes') ?></span></span></button>
+		</div>
+	</div>
+	<div id="reload_grid_notice" style="display: none;">
+		<div class="mask"></div>
+		<div><span class="note"><?php echo $this->__('You may need to reload the page to resort/refilter the grid') ?></span> <button type="button" class="button" onclick="productGridJsObject.reload();"><span><span><?php echo $this->__('Reload Grid') ?></span></span></button></div>
+	</div>
+	<script type="text/javascript">
+		<?php
+			$config = array(
+				'form_key'                => $this->getFormKey(),
+				'allow_reorder'           => $helper->getConfigValue('allow_reorder'),
+				'allow_inline_edit'       => $helper->getConfigValue('allow_inline_edit'),
+				'is_mass_inline_edit'     => $helper->getConfigValue('allow_inline_edit') == Itoris_ProductGrid_Helper_Grid::MASS_INLINE_EDIT,
+				'save_column_order_url'   => $this->getUrl('itoris_productgrid/admin_grid/saveColumnOrder', array('_current' => true)),
+				'save_inline_edit_url'    => $this->getUrl('itoris_productgrid/admin_grid/saveInlineEditAttr', array('_current' => true)),
+				'mass_save_inline_edit_url' => $this->getUrl('itoris_productgrid/admin_grid/massSaveInlineEditAttr', array('_current' => true)),
+				'get_gallery_config_url'  => $this->getUrl('itoris_productgrid/admin_grid/getGalleryConfig', array('_current' => true)),
+				'save_gallery_config_url' => $this->getUrl('itoris_productgrid/admin_grid/saveGalleryConfig', array('_current' => true)),
+				'message_attribute_blank' => $this->__('The Attribute cannot be left blank'),
+				'message_drag_click'      => $this->__('Drag to reorder column, click to sort'),
+				'message_drag'            => $this->__('Drag to reorder column'),
+				'message_click_sort'      => $this->__('Click to sort column'),
+			);
+		?>
+		itorisProductGrid = new Itoris.ProductGrid(<?php echo Zend_Json::encode($config) ?>, <?php echo $helper->getDefaultConfigJson() ?>);
+	</script>
+<?php endif; ?>

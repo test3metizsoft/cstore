@@ -1,0 +1,6 @@
+<?php if ($this->getFormObject()): ?>
+    <div class="entry-edit">
+    <?php echo $this->getFormObject()->getHtml() ?>
+    </div>
+    <?php echo $this->getChildHtml('grid') ?>
+<?php endif ?>

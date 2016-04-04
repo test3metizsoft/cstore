@@ -1,0 +1,121 @@
+.block-category-nav{position: relative;}
+/*** ESSENTIAL STYLES ***/
+.category-sidebar-nav, .category-sidebar-nav * {
+  margin:     0;
+  padding:    0;
+  list-style:   none;
+}
+.category-sidebar-nav ul {
+  position:   absolute;
+  top:      -999em;
+}
+.category-sidebar-nav ul li {
+  /* width:     100%; */
+}
+.category-sidebar-nav li:hover {
+  visibility:   inherit; /* fixes IE7 'sticky bug' */
+}
+.category-sidebar-nav li {
+  position:   relative;
+}
+.category-sidebar-nav a {
+  display:    block;
+  position:   relative;
+}
+.category-sidebar-nav a:hover{color:#f26522}
+.category-sidebar-nav li:hover ul,
+.category-sidebar-nav li.sfHover ul {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #DDDDDD;
+  box-shadow: 3px 3px 3px #464646;
+  left: 185px;
+  padding:10px;
+  top: 2.5px;
+  width: 180px;
+  z-index: 99999;
+}
+ul.category-sidebar-nav li:hover li ul,
+ul.category-sidebar-nav li.sfHover li ul {
+  top:      -999em;
+}
+ul.category-sidebar-nav li li:hover ul,
+ul.category-sidebar-nav li li.sfHover ul {
+  left:     185px; /* match ul width */
+  top:      0;
+}
+ul.category-sidebar-nav li li:hover li ul,
+ul.category-sidebar-nav li li.sfHover li ul {
+  top:      -999em;
+}
+ul.category-sidebar-nav li li li:hover ul,
+ul.category-sidebar-nav li li li.sfHover ul {
+  left:     10em; /* match ul width */
+  top:      0;
+}
+
+/*** DEMO SKIN ***/
+.category-sidebar-nav {}
+.category-sidebar-nav a {font-size:13px; font-weight:normal; color:#333333; text-decoration:none; padding:0 0 0 10px;}
+.category-sidebar-nav a, .category-sidebar-nav a:visited  {}
+.category-sidebar-nav li.last {background: none transparent!important;}
+.category-sidebar-nav li {padding:3px 0;}
+.category-sidebar-nav li li {
+  background:0 none;
+  width:100%;
+  float:left;
+}
+.category-sidebar-nav li li li {
+
+}
+.category-sidebar-nav li li li a:hover{color:#f26522}
+.category-sidebar-nav li.sfHover,
+.category-sidebar-nav a:focus, .category-sidebar-nav a:hover, .category-sidebar-nav a:active {
+  outline:    0;
+}
+
+/*** arrows **/
+.category-sidebar-nav a.sf-with-ul {min-width: 1px;}
+.category-sidebar-nav li.parent a.sf-with-ul {background: url(images/sub_icon.gif) no-repeat scroll 96% center transparent;}
+.category-sidebar-nav li.sfHover a{color:#595959;}
+.category-sidebar-nav li.sfHover ul li a:hover{color:#f26522}
+.category-sidebar-nav li.sfHover ul li.sfHover{/* background:#f26522!important; */}
+.category-sidebar-nav li.sfHover li a{border:0 none;height: auto;}
+.category-sidebar-nav li.sfHover li.parent li a{background: none transparent!important;}
+.category-sidebar-nav li.sfHover li.parent a{
+  background: url(images/sub_icon_2.gif) no-repeat scroll right center transparent;
+  color: #595959;
+  margin-right: 10px;
+}
+.category-sidebar-nav li.sfHover li li a{color:#595959;}
+.category-sidebar-nav li.sfHover ul li a{ padding-left: 0;padding-right: 10px;}
+.category-sidebar-nav li.sfHover ul li.sfHover a.hover{ color:#f26522}
+.category-sidebar-nav li.sfHover a.level-top .sf-sub-indicator{ background:0 none;}
+a > .sf-sub-indicator {  /* give all except IE6 the correct values */
+
+}
+/* apply hovers to modern browsers */
+a:focus > .sf-sub-indicator,
+a:hover > .sf-sub-indicator,
+a:active > .sf-sub-indicator,
+li:hover > a > .sf-sub-indicator,
+li.sfHover > a > .sf-sub-indicator {
+}
+
+/* point right for anchors in subs */
+.category-sidebar-nav ul .sf-sub-indicator { background-position:  -10px 0; }
+.category-sidebar-nav ul a > .sf-sub-indicator { background-position:  0 0; }
+/* apply hovers to modern browsers */
+.category-sidebar-nav ul a:focus > .sf-sub-indicator,
+.category-sidebar-nav ul a:hover > .sf-sub-indicator,
+.category-sidebar-nav ul a:active > .sf-sub-indicator,
+.category-sidebar-nav ul li:hover > a > .sf-sub-indicator,
+.category-sidebar-nav ul li.sfHover > a > .sf-sub-indicator {
+  background-position: -10px 0; /* arrow hovers for modern browsers*/
+}
+
+/*** shadows for all but IE6 ***/
+.sf-shadow ul {
+}
+.sf-shadow ul.sf-shadow-off {
+  background: transparent;
+}

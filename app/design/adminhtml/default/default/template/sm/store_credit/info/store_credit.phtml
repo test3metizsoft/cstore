@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var $this SM_StoreCredit_Block_Info_StoreCredit
+ * */
+?>
+<?php echo $this->escapeHtml($this->getMethod()->getConfigData('title')) ?>
+<?php if($additionalInformation = $this->getInfo()->getAdditionalInformation()): ?>
+    <?php foreach($additionalInformation as $key=> $info): ?>
+        <div class="checkmo-additional-information">
+            <label><?php echo Mage::helper('payment')->__($key . ':') ?></label>
+            <span>
+                <?php echo nl2br($this->escapeHtml($info)) ?>
+            </span>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>

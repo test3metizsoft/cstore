@@ -1,0 +1,146 @@
+<config>
+    <api>
+        <resources>
+           <resource_ginger translate="title" module="metizsoft_cstoreapi">
+            <title>Title Of My Resource</title>
+            <model>metizsoft_cstoreapi/objectmodel_api</model>
+            <methods>
+               <getProducts translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getProducts>
+                <getSearchproducts translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getSearchproducts>
+                <getSearch translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getSearch>
+                <getskuSearch translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getskuSearch>
+                <getPendingOrders translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getPendingOrders>
+                <getProductdetail translate="title" module="metizsoft_cstoreapi">
+                    <title>Get Product Detail</title>
+                </getProductdetail>
+                <getCategories translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getCategories>
+               <getCreate translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getCreate>
+                 <getUserlist translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getUserlist>   
+                <getWishList translate="title" module="metizsoft_cstoreapi">
+                    <title>Get Wishlist</title>
+                </getWishList>
+                 <getOrder translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getOrder>
+                 <getOrderlist translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>                
+                </getOrderlist>
+                 <getupdateCustomer translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>                
+                </getupdateCustomer>
+                <getUserlogin translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>                
+                </getUserlogin>
+                <getAddressbook translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>                
+                </getAddressbook>               
+                <getHomebanner translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getHomebanner>
+                 <getProductreview translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getProductreview>
+                
+                <getProductwishlist translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getProductwishlist>
+                
+                <getProductwishlist1 translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getProductwishlist1>
+                
+                <getUserinfo translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getUserinfo>
+                <getUsersubcat translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getUsersubcat>
+                <clearCart translate="title" module="metizsoft_cstoreapi">
+                    <title>Clear cart</title>
+                </clearCart>
+                <!-- Jaydip --> 
+                <getcityitems translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getcityitems>
+                 <!-- Arvind --> 
+                <getcounty translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getcounty>
+                <getcity translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getcity>
+                <!-- Arvind --> 
+                <getcitynorthjerse translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getcitynorthjerse>
+                <getcitynewyork translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getcitynewyork>                
+                <getcityjersey translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getcityjersey>
+                <getclearcart translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getclearcart>
+                <!-- Vishal -->
+                
+                <addwishlistItem translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </addwishlistItem> 
+                <getSearchproduct translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getSearchproduct>
+                <addNewItem translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </addNewItem>
+                <getshoppingcart translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getshoppingcart>
+                 <getrootcategory translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getrootcategory>
+                <getregion translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getregion>
+                <getCartdata translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getCartdata>
+                <addnewReview translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </addnewReview>
+                <addcartCreate translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </addcartCreate>
+                <changepassword translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </changepassword>
+                <getcartid translate="title" module="metizsoft_cstoreapi">
+                    <title>Title Of My Method</title>
+                </getcartid>
+                <getLogin translate="title" module="metizsoft_cstoreapi">
+                    <title>Customer Login</title>
+                </getLogin>
+                <getQuoteid translate="title" module="metizsoft_cstoreapi">
+                    <title>Customer Quote Id</title>
+                </getQuoteid>
+            </methods>
+            </resource_ginger>
+        </resources>
+    </api>
+</config>

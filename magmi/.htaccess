@@ -1,0 +1,7 @@
+###### Password protection ######
+#AuthUserFile /home/cstorema/cstoremaster.com/.htpasswd
+#AuthType Basic
+#AuthName "Restricted Access"
+#Require valid-user
+#################################
+

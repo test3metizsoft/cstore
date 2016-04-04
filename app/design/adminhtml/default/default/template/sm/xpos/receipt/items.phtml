@@ -1,0 +1,110 @@
+<?php
+/*
+ * @var SM_XPos_Block_Adminthml_XPos_Receipt_Items $this
+ */
+    $var = $this->getParentBlock()->_viewVars;
+    $printeGift = $var['printGift'];
+?>
+
+<div class="items-view" style="<?php echo $this->getHtmlSeparatorStyle(); ?>">
+    <table>
+        <thead>
+        <tr style="text-decoration: underline">
+            <td class="item-name">#</td>
+            <th class="item-name" data-metadata="item-name"
+                align="left"><?php echo Mage::helper('xpos')->__('Description'); ?></th>
+
+            <th data-metadata="qty" <?php if($printeGift) echo 'style="padding-right: 80px;"' ?>><?php echo Mage::helper('xpos')->__('Qty'); ?></th>
+            <?php
+                if (!$printeGift) {
+                    ?>
+                    <th class="price-container"
+                        data-metadata="price"><?php echo Mage::helper('xpos')->__('Price'); ?></th>
+<!--                    <th class="tax" data-metadata="tax-amount">--><?php //echo Mage::helper('xpos')->__('TAX'); ?><!--</th>-->
+                    <th class="row-total" data-metadata="row-total"
+                        align="right"><?php echo Mage::helper('xpos')->__('AMOUNT'); ?></th>
+                    <?php
+                }
+            ?>
+        </tr>
+        </thead>
+        <tbody>
+        <?php if ($this->getRequest()->getParam('preview') != null): ?>
+            <!--For previewing-->
+            <tr>
+                <td>1</td>
+                <td class="item-name" data-metadata="item-name" align="left">Product Item Preview #1 <span class="sku">SKU!123</span>
+                </td>
+                <td data-metadata="qty">0</td>
+                <td class="price-container" data-metadata="price"><?php echo Mage::helper('core')->currency(0, true, false); ?></td>
+<!--                <td class="tax" data-metadata="tax-amount">--><?php //echo Mage::helper('core')->currency(0, true, false); ?><!--</td>-->
+                <td class="row-total" data-metadata="row-total" align="right"><?php echo Mage::helper('core')->currency(0, true, false); ?></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td class="item-name" data-metadata="item-name" align="left">Product Item Preview #2 <span class="sku">SKU!223</span>
+                </td>
+                <td data-metadata="qty">0</td>
+                <td class="price-container" data-metadata="price"><?php echo Mage::helper('core')->currency(0, true, false); ?></td>
+<!--                <td class="tax" data-metadata="tax-amount">--><?php //echo Mage::helper('core')->currency(0, true, false); ?><!--</td>-->
+                <td class="row-total" data-metadata="row-total" align="right"><?php echo Mage::helper('core')->currency(0, true, false); ?></td>
+            </tr>
+        <?php endif; ?>
+        <?php $count = 0;
+        $collection = $this->getItems();
+        $sum = $collection->getSize();
+        foreach ($collection as $_item): ?>
+            <?php if ($_item->getData('parent_item_id') == null): ?>
+                <tr style="font-size: 8pt">
+                    <td><?php echo ++$count; ?></td>
+                    <td class="item-name"  data-metadata="item-name" align="left">
+                    <?php echo $_item->getName(); ?>
+
+                    </td>
+                    <td data-metadata="qty" <?php
+                        if ($printeGift) echo 'style="padding-right: 85px;"'
+                    ?>><?php echo floatval($_item->getQtyOrdered()); ?></td>
+                    <?php
+                        if (!$printeGift) {
+                            ?>
+                            <td class="price-container" data-metadata="price">
+                                <?php if ($this->helper('tax')->displaySalesBothPrices() || $this->helper('tax')->displaySalesPriceExclTax()): ?>
+                                    <?php echo $this->getOrder()->formatPrice($_item->getData('price')); ?>
+                                <?php endif; ?>
+                                <?php if ($this->helper('tax')->displaySalesBothPrices() || $this->helper('tax')->displaySalesPriceInclTax()): ?>
+                                    <?php echo $this->getOrder()->formatPrice($_item->getData('price_incl_tax')); ?>
+                                <?php endif; ?>
+                            </td>
+<!--                            <td class="tax"-->
+<!--                                data-metadata="tax-amount">--><?php //echo $this->getOrder()->formatPrice($_item->getData('tax_amount')); ?><!--</td>-->
+                            <td class="row-total" data-metadata="row-total" align="right">
+                                <?php if ($this->helper('tax')->displaySalesBothPrices() || $this->helper('tax')->displaySalesPriceExclTax()): ?>
+                                    <?php echo $this->getOrder()->formatPrice($_item->getData('row_total')); ?>
+                                <?php endif; ?>
+                                <?php if ($this->helper('tax')->displaySalesBothPrices() || $this->helper('tax')->displaySalesPriceInclTax()): ?>
+                                    <?php echo $this->getOrder()->formatPrice($_item->getData('row_total_incl_tax')); ?>
+                                <?php endif; ?>
+                            </td>
+                        <?php } ?>
+                </tr>
+                <tr style="text-transform: uppercase;font-size: 6pt;text-align: left;">
+                    <td colspan="5" style="<?php if($count!=$sum) echo "padding: 0;border-bottom: 1px solid #000 !important;";  ?>">
+                        <span class="sku"
+                              style="font-size: 7pt;font-weight: bold"><?php echo $_item->getSku(); ?></span>
+                        <span style="margin-left: 5px">Unit Box:<?php
+                            echo $_item->getProduct()->getUnitinbox();
+                            ?></span>
+                        <span
+                            style="margin-left: 5px">State Tax: <?php echo $this->getOrder()->formatPrice($_item->getData('statetax')); ?></span>
+                        <span
+                            style="margin-left: 5px">County Tax: <?php echo $this->getOrder()->formatPrice($_item->getData('countrytax')); ?></span>
+                        <span
+                            style="margin-left: 5px">City Tax: <?php echo $this->getOrder()->formatPrice($_item->getData('citytax')); ?></span>
+                    </td>
+                </tr>
+            <?php endif; ?>
+
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

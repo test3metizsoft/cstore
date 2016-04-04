@@ -1,0 +1,251 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Metizsoft_Taxgenerate extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Metizsoft
+ * @package        Metizsoft_Taxgenerate
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<layout>
+    <adminhtml_taxgenerate_statetax_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>metizsoft_taxgenerate/statetax</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="metizsoft_taxgenerate/adminhtml_statetax" name="statetax" />
+
+        </reference>
+    </adminhtml_taxgenerate_statetax_index>
+    <adminhtml_taxgenerate_statetax_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="metizsoft_taxgenerate/adminhtml_statetax_grid" name="statetax_grid"/>
+        </block>
+    </adminhtml_taxgenerate_statetax_grid>
+    <!-- Statetax add/edit action -->
+    <adminhtml_taxgenerate_statetax_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>metizsoft_taxgenerate/statetax</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="metizsoft_taxgenerate/adminhtml_statetax_edit" name="statetax_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="metizsoft_taxgenerate/adminhtml_statetax_edit_tabs" name="statetax_tabs"></block>
+        </reference>
+    </adminhtml_taxgenerate_statetax_edit>
+
+    <adminhtml_taxgenerate_countylist_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>metizsoft_taxgenerate/countylist</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="metizsoft_taxgenerate/adminhtml_countylist" name="countylist" />
+
+        </reference>
+    </adminhtml_taxgenerate_countylist_index>
+    <adminhtml_taxgenerate_countylist_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="metizsoft_taxgenerate/adminhtml_countylist_grid" name="countylist_grid"/>
+        </block>
+    </adminhtml_taxgenerate_countylist_grid>
+    <!-- Countylist add/edit action -->
+    <adminhtml_taxgenerate_countylist_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>metizsoft_taxgenerate/countylist</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="metizsoft_taxgenerate/adminhtml_countylist_edit" name="countylist_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="metizsoft_taxgenerate/adminhtml_countylist_edit_tabs" name="countylist_tabs"></block>
+        </reference>
+    </adminhtml_taxgenerate_countylist_edit>
+    
+    
+    
+    
+    
+    
+    <adminhtml_taxgenerate_countytax_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>metizsoft_taxgenerate/countytax</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="metizsoft_taxgenerate/adminhtml_countytax" name="countytax" />
+        </reference>
+    </adminhtml_taxgenerate_countytax_index>
+    <adminhtml_taxgenerate_countytax_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="metizsoft_taxgenerate/adminhtml_countytax_grid" name="countytax_grid"/>
+        </block>
+    </adminhtml_taxgenerate_countytax_grid>
+    <!-- countytax add/edit action -->
+    <adminhtml_taxgenerate_countytax_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>metizsoft_taxgenerate/countytax</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="metizsoft_taxgenerate/adminhtml_countytax_edit" name="countytax_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="metizsoft_taxgenerate/adminhtml_countytax_edit_tabs" name="countytax_tabs"></block>
+        </reference>
+    </adminhtml_taxgenerate_countytax_edit>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <adminhtml_taxgenerate_citylist_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>metizsoft_taxgenerate/citylist</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="metizsoft_taxgenerate/adminhtml_citylist" name="citylist" />
+
+        </reference>
+    </adminhtml_taxgenerate_citylist_index>
+    <adminhtml_taxgenerate_citylist_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="metizsoft_taxgenerate/adminhtml_citylist_grid" name="citylist_grid"/>
+        </block>
+    </adminhtml_taxgenerate_citylist_grid>
+    <!-- Citylist add/edit action -->
+    <adminhtml_taxgenerate_citylist_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>metizsoft_taxgenerate/citylist</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="metizsoft_taxgenerate/adminhtml_citylist_edit" name="citylist_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="metizsoft_taxgenerate/adminhtml_citylist_edit_tabs" name="citylist_tabs"></block>
+        </reference>
+    </adminhtml_taxgenerate_citylist_edit>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <adminhtml_taxgenerate_citytax_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>metizsoft_taxgenerate/citytax</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="metizsoft_taxgenerate/adminhtml_citytax" name="citytax" />
+        </reference>
+    </adminhtml_taxgenerate_citytax_index>
+    <adminhtml_taxgenerate_citytax_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="metizsoft_taxgenerate/adminhtml_citytax_grid" name="citytax_grid"/>
+        </block>
+    </adminhtml_taxgenerate_citytax_grid>
+    <!-- Citylist add/edit action -->
+    <adminhtml_taxgenerate_citytax_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>metizsoft_taxgenerate/citytax</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="metizsoft_taxgenerate/adminhtml_citytax_edit" name="citytax_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="metizsoft_taxgenerate/adminhtml_citytax_edit_tabs" name="citytax_tabs"></block>
+        </reference>
+    </adminhtml_taxgenerate_citytax_edit>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <adminhtml_taxgenerate_statetax_tax>
+        <update handle="report_sales"/>
+        <reference name="content">
+            <block type="metizsoft_taxgenerate/adminhtml_report_sales_tax" template="report/grid/container.phtml" name="sales.report.grid.container">
+                <block type="adminhtml/store_switcher" template="report/store/switcher/enhanced.phtml" name="store.switcher">
+                    <action method="setStoreVarName"><var_name>store_ids</var_name></action>
+                </block>
+                <block type="sales/adminhtml_report_filter_form" name="grid.filter.form">
+                    <action method="addReportTypeOption" translate="value">
+                        <key>created_at_order</key>
+                        <value>Order Created Date</value>
+                    </action>
+                    <action method="addReportTypeOption" translate="value">
+                        <key>updated_at_order</key>
+                        <value>Order Updated Date</value>
+                    </action>
+                    <action method="setFieldOption" translate="value">
+                        <field>report_type</field>
+                        <option>note</option>
+                        <value>Order Updated Date report is real-time, does not need statistics refreshing.</value>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </adminhtml_taxgenerate_statetax_tax>
+</layout>

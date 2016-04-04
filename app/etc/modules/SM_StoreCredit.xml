@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <SM_StoreCredit>
+      <active>true</active>
+      <codePool>local</codePool>
+      <version>1.0.0</version>
+    </SM_StoreCredit>
+  </modules>
+</config>

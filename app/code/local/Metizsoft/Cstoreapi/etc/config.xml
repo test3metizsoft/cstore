@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Metizsoft_Cstoreapi>
+            <version>0.1.0</version>
+        </Metizsoft_Cstoreapi>
+    </modules>
+    <global>
+        <models>
+            <metizsoft_cstoreapi>
+                <class>Metizsoft_Cstoreapi_Model</class>
+            </metizsoft_cstoreapi>
+        </models>
+    </global>
+</config>

@@ -1,0 +1,39 @@
+<?php
+/*
+ * @var SM_XPos_Block_Adminhtml_Xpos_Receipt_Store
+ */
+?>
+<div class="store-info" style="text-transform: uppercase;">
+    <table style="border-bottom: double 3px #000;">
+        <tr>
+            <td class="name" style="text-align: <?php echo $this->getHtmlAlignment(); ?>;" colspan="2"></td>
+        </tr>
+        <tr>
+            <td class="address" style="text-align: <?php echo $this->getHtmlAlignment(); ?>;" colspan="2">
+                <?php echo $this->getStoreAddress(); ?>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="contact"><?php echo $this->getSlogan(true); ?></td>
+        </tr>
+        <tr>
+            <td style="text-align: left">
+                <?php //echo $this->getStorePhone(); ?>
+                PH : 1(844)-392-7867
+            </td>
+            <td style="text-align: right">Fax# : 256-513-4880</td>
+        </tr>
+    </table>
+    <br/>
+    <table width="100%">
+        <tr>
+            <td style="text-align: left">
+                <?php echo $this->getOrder()->getBillingAddress()->getCompany(); ?>
+            </td>
+            <td style="text-align: right">
+                <?php $this->getChild('date')->setData("order", $this->getOrder()); ?>
+                <?php echo $this->getChildHtml('date', false); ?>
+            </td>
+        </tr>
+    </table>
+</div>

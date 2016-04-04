@@ -1,0 +1,40 @@
+<?php
+$_formData = $this->getSend2FriendFormData();
+?>
+<div class="fieldset">
+    <h2 class="legend"><?php echo Mage::helper('credit')->__('Send Credit to Friend') ?></h2>
+    <form action="<?php echo $this->getSend2FriendUrl() ?>" method="post" autocomplete="off" id="form-send2friend">
+        <div class="fieldset">
+            <?php echo $this->getBlockHtml('formkey')?>
+            <ul class="form-list">
+                <li>
+                    <label for="email" class="required"><em>*</em><?php echo Mage::helper('credit')->__('Email Address') ?></label>
+                    <div class="input-box">
+                        <input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="email" id="email" class="input-text required-entry validate-email" value="<?php echo $_formData->getEmail() ?>">
+                    </div>
+                </li>
+                <li>
+                    <label for="amount" class="required"><em>*</em><?php echo Mage::helper('credit')->__('Amount') ?></label>
+                    <div class="input-box">
+                        <input type="number" autocapitalize="off" autocorrect="off" spellcheck="false" name="amount" id="amount" class="input-text required-entry validate-number" value="<?php echo $_formData->getAmount() ?>">
+                    </div>
+                </li>
+                <li>
+                    <label for="message"><?php echo Mage::helper('credit')->__('Message') ?></label>
+                    <div class="input-box">
+                        <textarea name="message" id="message" class="input-text"><?php echo $_formData->getMessage() ?></textarea>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="buttons-set">
+            <button type="submit" class="button"><span><span><?php echo Mage::helper('credit')->__('Send') ?></span></span></button>
+        </div>
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('form-send2friend', true);
+    //]]>
+    </script>
+</div>

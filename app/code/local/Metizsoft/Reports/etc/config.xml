@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Metizsoft_Reports>
+            <version>1.0.0</version>
+            <depends>
+                <Mage_Adminhtml />
+                <Mage_Sales />
+            </depends>
+        </Metizsoft_Reports>
+    </modules>
+
+    <global>
+        <models>
+            <metizsoft_reports>
+                <class>Metizsoft_Reports_Model</class>
+                <resourceModel>metizsoft_reports_mysql4</resourceModel>
+            </metizsoft_reports>
+            <metizsoft_reports_mysql4>
+                <class>Metizsoft_Reports_Model_Mysql4</class>
+                <entities>		  
+                    <reports>
+                        <table>reports</table>
+                    </reports>
+                    <mystatetax>
+                        <table>custom_reports</table>
+                    </mystatetax>
+                </entities>
+            </metizsoft_reports_mysql4>
+        </models>
+        <helpers>
+            <metizsoft_reports>
+                <class>Metizsoft_Reports_Helper</class>
+            </metizsoft_reports>
+        </helpers>
+        <blocks>
+            <metizsoft_reports>
+                <class>Metizsoft_Reports_Block</class>
+            </metizsoft_reports>
+        </blocks>
+        <resources>
+            <metizsoft_reports_setup>
+                <setup>
+                    <module>Metizsoft_Reports</module>
+                </setup>
+            </metizsoft_reports_setup>
+        </resources>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Metizsoft_Reports before="Mage_Adminhtml">Metizsoft_Reports_Adminhtml</Metizsoft_Reports>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <metizsoft_reports>
+                    <file>metizsoft_reports.xml</file>
+                </metizsoft_reports>
+            </updates>
+        </layout>
+    </adminhtml>
+
+</config>

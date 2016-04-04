@@ -1,0 +1,67 @@
+<?php
+/*
+ * @var SM_XPos_Block_Adminhtml_XPos_Receipt_Order $this
+ */
+
+?>
+
+<div class="receipt-info">
+<!--    <div class="container">-->
+<!--        <div class="customer-info">-->
+<!--            <span>--><?php //echo $this->helper('xpos')->__('CUSTOMER') ?><!--</span>-->
+<!--            <span><strong>--><?php //echo $this->getOrder()->getCustomerName(); ?><!-- #--><?php //echo $this->getOrder()->getCustomerId(); ?><!--</strong></span>-->
+<!--        </div>-->
+<!--        <div class="order">-->
+<!--            <span>--><?php //echo $this->helper('xpos')->__('ORDER') ?><!--</span>-->
+<!--            <span><strong>#--><?php //echo $this->getOrder()->getIncrementId(); ?><!--</strong></span>-->
+<!--        </div>-->
+<!--        --><?php //if($this->getCashier()): ?>
+<!--            <div class="cashier">-->
+<!--                <span>--><?php //echo $this->helper('xpos')->__('CASHIER') ?><!--</span>-->
+<!--                <span>--><?php //echo $this->getCashier()->getName(); ?><!--</span>-->
+<!--            </div>-->
+<!--        --><?php //endif; ?>
+<!--    </div>-->
+    <table width="100%">
+        <tr>
+            <td rowspan="2" style="width: 50%;text-align: left" class="reciptaddress">
+                <br />
+                <?php
+                $order = $this->getOrder();
+                $address = $order->getShippingAddress()->getFormated(true);
+                echo $address;
+                ?>
+            </td>
+            <td style="width: 50%;text-align: right;vertical-align: top;">
+                <?php
+                if ($order->hasInvoices()) {
+                    $invIncrementIDs = array();
+                    foreach ($order->getInvoiceCollection() as $inv) {
+                        $invIncrementIDs[] = $inv->getIncrementId();
+                    }
+                    echo $this->helper('xpos')->__('Invoice') . ' #' . $invIncrementIDs[0];
+                }
+                ?>
+            </td>
+        </tr>
+        <tr>
+            <!--            <td style="text-align: left;width: 50%">-->
+            <!--                --><?php
+            //                $address = $order->getShippingAddress()->getData();
+            //                echo $address['city'] . ', ' . $address['statecounty'] . ', ' . $address['postcode'] . '.';
+            //                ?>
+            <!--            </td>-->
+            <td style="text-align: right; width: 50%; vertical-align: top;">
+                <?php $outofcityarea = ($this->getOrder()->getShippingAddress()->getOutofcityarea()==10)?'Yes':'No'; ?>
+                City Limit : <?php echo $outofcityarea; ?><br />
+                County : <?php echo $this->getOrder()->getShippingAddress()->getStatecounty(); ?><br />
+                Sales Tax ID : <?php echo $this->getOrder()->getShippingAddress()->getSalestaxid(); ?><br />
+                Payment :<?php echo Mage::helper('xpos')->__($this->getPaymentMethodTitle()); ?> <br />
+            </td>
+        </tr>
+    </table>
+
+</div>
+<style>
+    .reciptaddress span{display: none;}
+</style>

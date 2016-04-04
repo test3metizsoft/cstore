@@ -1,0 +1,20 @@
+<div class="form-container">
+    <div class="content-header">
+        <h3 class="icon-head head-products"><?php echo $this->getHeader() ?></h3>
+    </div>
+    <?php if($this->getSet()): ?>
+        <button type="button" id="add-product-back" class="scalable cancel" onclick="backToSetSelection()">
+            <span><span><?php echo Mage::helper('catalog/product')->__('Back') ?></span></span>
+        </button>
+        <button type="button" id="add-product-save"  class="scalable save" onclick="addNewProduct()">
+            <span><span><?php echo Mage::helper('catalog/product')->__('Save') ?></span></span>
+        </button>
+        <input type="hidden" name="set" id="set" value="<?php echo $this->getSet() ?>">
+    <?php else: ?>
+
+    <?php endif; ?>
+    <!--<form action="--><?php //echo $this->getSaveUrl() ?><!--" method="post" id="product_edit_form" enctype="multipart/form-data">-->
+    <?php echo $this->getBlockHtml('formkey')?>
+    <?php echo $this->getChildHtml() ?>
+    <!--</form>-->
+</div>

@@ -1,0 +1,121 @@
+<layout version="0.1.0">
+    
+    <adminhtml_customer_edit>
+        <reference name="customer_edit_tabs">
+            <block type="credit/adminhtml_customer_edit_tab_credit" name="credit"/>
+            <action method="addTab">
+                <name>credit</name>
+                <block>credit</block>
+            </action>
+        </reference>
+    </adminhtml_customer_edit>
+
+
+    <adminhtml_sales_order_creditmemo_new>
+        <reference name="creditmemo_totals">
+            <block type="adminhtml/sales_order_totals_item" name="credit" template="mst_credit/sales/creditmemo/totals/credit.phtml" after="-" />
+        </reference>
+
+        <reference name="submit_before">
+            <block type="credit/adminhtml_sales_order_creditmemo_controls" name="credit" template="mst_credit/sales/creditmemo/refund.phtml" />
+        </reference>
+    </adminhtml_sales_order_creditmemo_new>
+
+    <adminhtml_sales_order_creditmemo_updateqty>
+        <reference name="creditmemo_totals">
+            <block type="adminhtml/sales_order_totals_item" name="credit" template="mst_credit/sales/creditmemo/totals/credit.phtml" after="-" />
+        </reference>
+
+        <reference name="submit_before">
+            <block type="credit/adminhtml_sales_order_creditmemo_controls" name="credit" template="mst_credit/sales/creditmemo/refund.phtml" />
+        </reference>
+    </adminhtml_sales_order_creditmemo_updateqty>
+
+    <adminhtml_sales_order_creditmemo_view>
+        <reference name="creditmemo_totals">
+            <block type="adminhtml/sales_order_totals_item" name="credit" template="mst_credit/sales/creditmemo/totals/view.phtml" after="-" />
+            <block type="adminhtml/sales_order_totals_item" name="credit_refunded" template="sales/order/totals/item.phtml">
+                <action method="setSourceField">
+                    <value>credit_total_refunded</value>
+                </action>
+                <action method="setAfterCondition">
+                    <condition>last</condition>
+                </action>
+                <action method="setLabel">
+                    <value>Refunded to Store Credit</value>
+                </action>
+                <action method="setDisplayArea">
+                    <value>footer</value>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_creditmemo_view>
+
+    <adminhtml_sales_order_view>
+        <reference name="order_totals">
+            <block type="adminhtml/sales_order_totals_item" name="credit" template="mst_credit/sales/order/totals/credit.phtml">
+                <action method="setSourceField">
+                    <value>credit_amount</value>
+                </action>
+                <action method="setLabel">
+                    <value>Store Credit</value>
+                </action>
+            </block>
+            <block type="adminhtml/sales_order_totals_item" name="credit_refunded" template="sales/order/totals/item.phtml">
+                <action method="setSourceField">
+                    <value>credit_total_refunded</value>
+                </action>
+                <action method="setLabel">
+                    <value>Refunded to Store Credit</value>
+                </action>
+                <action method="setDisplayArea">
+                    <value>footer</value>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_view>
+
+    <adminhtml_sales_order_create_load_block_billing_method>
+        <reference name="billing_method">
+            <block type="credit/adminhtml_sales_order_create_payment" template="mst_credit/sales/order/create/payment.phtml" name="credit" before="-" />
+        </reference>
+    </adminhtml_sales_order_create_load_block_billing_method>
+
+    <adminhtml_sales_order_create_load_block_data>
+        <reference name="billing_method">
+            <block type="credit/adminhtml_sales_order_create_payment" template="mst_credit/sales/order/create/payment.phtml" name="credit" before="-" />
+        </reference>
+    </adminhtml_sales_order_create_load_block_data>
+
+    <adminhtml_sales_order_create_index>
+        <reference name="billing_method">
+            <block type="credit/adminhtml_sales_order_create_payment" template="mst_credit/sales/order/create/payment.phtml" name="credit" before="-" />
+        </reference>
+    </adminhtml_sales_order_create_index>
+
+    <adminhtml_sales_order_invoice_new>
+        <reference name="invoice_totals">
+            <block type="adminhtml/sales_order_totals_item" name="credit" template="mst_credit/sales/order/totals/credit.phtml" after="-">
+                <action method="setSourceField">
+                    <value>credit_amount</value>
+                </action>
+                <action method="setLabel">
+                    <value>Store Credit</value>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_invoice_new>
+
+    <adminhtml_sales_order_invoice_view>
+        <reference name="invoice_totals">
+            <block type="adminhtml/sales_order_totals_item" name="credit" template="mst_credit/sales/order/totals/credit.phtml" after="-">
+                <action method="setSourceField">
+                    <value>credit_amount</value>
+                </action>
+                <action method="setLabel">
+                    <value>Store Credit</value>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_invoice_view>
+</layout>

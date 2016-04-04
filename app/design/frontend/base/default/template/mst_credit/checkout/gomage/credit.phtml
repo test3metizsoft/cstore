@@ -1,0 +1,29 @@
+<?php
+$_balance = $this->getBalance();
+?>
+<?php if ($_balance && $_balance->getAmount() > 0): ?>
+<p><?php echo Mage::helper('credit')->__('Your current balance is: <b>%s</b>',
+            Mage::helper('core')->currency($_balance->getAmount())) ?></p>
+
+<input type="hidden" name="remove-credit" id="remove-points" value="0">
+<?php if ($this->getUsedAmount() == 0): ?>
+<button type="button" class="button" onclick="creditSubmit(1);">
+    <span><span>
+        <?php echo Mage::helper('credit')->__('Use Store Credit (%s)',
+            strip_tags(Mage::helper('core')->currency($this->getAmountToUse()))) ?>
+    </span></span>
+</button>
+<?php else: ?>
+<button type="button" class="button" onclick="creditSubmit(0);">
+    <span><span><?php echo Mage::helper('credit')->__('Cancel') ?></span></span>
+</button>
+<?php endif ?>
+<br>
+<br>
+<script type="text/javascript">
+function creditSubmit(isRemove)
+{
+    checkout.submit({credit: isRemove}, 'get_totals');
+}
+</script>
+<?php endif ?>

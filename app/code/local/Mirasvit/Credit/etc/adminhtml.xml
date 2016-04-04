@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <menu>
+        <sales>
+            <children>
+            <credit module="credit">
+                <title>Store Credit</title>
+                <sort_order>10</sort_order>
+                <children>
+                <balance module="credit">
+                    <title>Customers</title>
+                    <sort_order>10</sort_order>
+                    <action>adminhtml/credit_balance</action>
+                </balance>
+                <transaction module="credit">
+                    <title>Transactions</title>
+                    <sort_order>20</sort_order>
+                    <action>adminhtml/credit_transaction</action>
+                </transaction>
+                </children>
+            </credit>
+            </children>
+        </sales>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                <sales>
+                    <children>
+                    <credit module="credit">
+                        <title>Store Credit</title>
+                        <sort_order>10</sort_order>
+                        <children>
+                        <balance module="credit">
+                            <title>Customers</title>
+                            <sort_order>10</sort_order>
+                            <action>adminhtml/credit_balance</action>
+                        </balance>
+                        <transaction module="credit">
+                            <title>Transactions</title>
+                            <sort_order>20</sort_order>
+                            <action>adminhtml/credit_transaction</action>
+                        </transaction>
+                        </children>
+                    </credit>
+                    </children>
+                </sales>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <credit translate="title" module="credit">
+                                        <title>Mirasvit Credit</title>
+                                    </credit>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

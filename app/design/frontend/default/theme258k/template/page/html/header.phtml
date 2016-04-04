@@ -1,0 +1,152 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<?php
+$getSession = Mage::getSingleton('core/session')->getFirstTime();
+if($getSession == 'firsttime'){
+    if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+         $customerData = Mage::getSingleton('customer/session')->getCustomer();
+         $dropbox = '<select class="form-control addressid" name="address">';
+         $i=1;
+         $open = 0;
+         foreach ($customerData->getAddresses() as $key => $address)
+         {
+            if($i == 1){
+                $open = 1;
+            }
+            $customerAddress = $address->getData();
+            $option = $address->getStreet(1).', '.$address->getRegion().', '.$address->getStatecounty().', '.$address->getCity().', '.$address->getPostcode();
+            $dropbox .= '<option value="'.$address->getId().'">'.$option.'</option>';
+            $i++;
+         }
+         $dropbox .='</select>';
+         if($open == 1){
+             Mage::getSingleton('core/session')->unsFirstTime();
+             ?>
+<div class="black_overlay" id="black_light"></div>
+             <div id="light" class="white_content">
+    <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('black_light').style.display='none';">Close</a>
+            <div class="addressbox">
+                <b>Select Shipping Address</b>
+            <?php
+            echo $dropbox; ?>
+	<span class="white_content_msg">All tobacco prices are not included State, County, and City tax.<br />Tax will add after adding item to cart.</span>
+        <?php     echo '<button class="setaddress button"><span><span>Submit</span></span></button>';
+            ?>
+            </div>
+    </div>
+            <?php
+         }
+    }
+}
+?>
+<script>
+jQuery(document).ready(function(){
+    jQuery('.setaddress').click(function(){
+        var setaddress = jQuery('.addressid').val();
+        jQuery.ajax({
+            method: "POST",
+            url: "<?php echo Mage::getBaseUrl(); ?>getcitys/index/setaddress/",
+            data: { id: setaddress}
+        }).done(function( msg ) {
+            jQuery('#black_light, #light').hide();
+        });
+    
+    });
+});
+</script>
+<div class="shadow"></div>
+<div class="swipe-left"></div>
+<div class="swipe">
+    <div class="swipe-menu">
+        <?php echo $this->getChildHtml('topLinks') ?>
+        <?php echo $this->getChildHtml('currency_2') ?>
+        <?php echo $this->getChildHtml('store_language_2') ?>
+        <?php echo $this->getChildHtml('footer_links') ?>
+        <?php echo $this->getChildHtml('cms_footer_links') ?>
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cms_footer_links')->toHtml() ?>   
+        <!--<div class="footer-links-menu"> 
+            <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links')->toHtml() ?>  
+            <?php //echo $this->getLayout()->createBlock('core/template')->setTemplate('page/template/custum_link_header.phtml')->toHtml(); ?>
+        </div>-->
+    </div>
+</div>
+<div class="top-icon-menu">
+    <div class="swipe-control"><i class="fa fa-align-justify"></i></div>
+    <div class="top-search"><i class="fa fa-search"></i></div>
+    <span class="clear"></span>
+</div>
+<div class="header-container">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+    <div class="header">
+        <div class="header_wrapper">
+									<?php if ($this->getIsHomePage()):?>
+         <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+         <?php else:?>
+             <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+         <?php endif?>
+         <div class="col-left top_middle">
+         <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('top_middle')->toHtml() ?>   
+         </div>
+         <div class="right_head">
+          <div class="header-buttons">
+              <?php echo $this->getChildHtml('currency') ?>
+              <?php echo $this->getChildHtml('store_language') ?>
+          </div>
+          <?php echo $this->getChildHtml('header_info') ?>
+             <div class="topheadercart">
+          <?php echo $this->getChildHtml('cart_header'); ?>
+             </div>
+          <div class="welcome-notice1">
+				<p class="notice-msg1">Tobacco prices are not included tax</p>
+				<?php if(Mage::getSingleton('customer/session')->isLoggedIn()) { ?>
+					<p class="welcome-msg1"><?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?></p>
+				<?php } else { ?>
+					<p class="welcome-msg">Log in to see prices!</p>
+				<?php }	?>
+			</div>
+         </div>
+        </div>
+        <div class="top_row">
+        	<div class="top_row_border">
+         	<?php echo $this->getChildHtml('topLinks') ?>
+          <?php echo $this->getChildHtml('topSearch') ?>
+         </div>
+        </div>
+            <div class="clear"></div>
+        <?php echo $this->getChildHtml('topContainer'); ?>
+    </div>
+   </div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<?php echo $this->getChildHtml('topMenu') ?>

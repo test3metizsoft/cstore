@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<itoris_productgrid_admin_settings_index>
+		<reference name="head">
+			<action method="addJs"><name>itoris/productgrid/admin/helper.js</name></action>
+			<action method="setTitle">
+				<params>Settings / Advanced Product Grid / Itoris Extensions / Magento Admin</params>
+			</action>
+		</reference>
+		<reference name="content">
+			<block type="itoris_productgrid/admin_settings_edit" name="settings_edit" />
+		</reference>
+		<reference name="left">
+			<block type="adminhtml/store_switcher" name="store_switcher">
+				<action method="setUseConfirm"><params>0</params></action>
+			</block>
+		</reference>
+		<reference name="menu">
+			<action method="setActive">
+				<params>system/itoris_extensions/productgrid</params>
+			</action>
+		</reference>
+	</itoris_productgrid_admin_settings_index>
+
+	<adminhtml_catalog_product_index>
+		<reference name="head">
+			<action method="addJs"><name>itoris/productgrid/admin/helper.js</name></action>
+			<action method="addJs"><name>itoris/productgrid/admin/grid.js</name></action>
+			<action method="addCss"><name>itoris/productgrid/grid.css</name></action>
+		</reference>
+		<reference name="products_list">
+			<action method="setTemplate"><path>itoris/productgrid/product/product.phtml</path></action>
+			<block type="itoris_productgrid/admin_catalog_product_grid_gallery" name="itoris_gallery" />
+		</reference>
+	</adminhtml_catalog_product_index>
+
+	<itoris_productgrid_admin_grid_savegalleryconfig>
+		<update handle="adminhtml_catalog_product_grid" />
+	</itoris_productgrid_admin_grid_savegalleryconfig>
+
+	<itoris_productgrid_admin_grid_saveinlineeditattr>
+		<update handle="adminhtml_catalog_product_grid" />
+	</itoris_productgrid_admin_grid_saveinlineeditattr>
+</layout>

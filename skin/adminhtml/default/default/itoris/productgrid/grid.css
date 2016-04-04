@@ -1,0 +1,182 @@
+#itoris_productgrid_mask {
+	position: fixed;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	z-index: 400;
+}
+#itoris_productgrid_config, #itoris_productgrid_gallery {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -450px;
+	width: 900px;
+	z-index: 401;
+	background-color: #ffffff;
+	border: 2px solid #000000;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+#itoris_productgrid_gallery {
+	width: 90%;
+	margin-left: 0;
+	left: 5%;
+}
+.itoris_productgrid_header {
+	width: 100%;
+	height: 42px;
+	margin:0;
+	padding:0;
+	background-color: #454545;
+	color: #ffffff;
+}
+.itoris_productgrid_header span {
+	display: block;
+	padding: 10px 0 0 12px;
+	font-size:22px;
+	font-weight:bold;
+}
+.itoris_productgrid_close, .itoris_productgrid_gallery_close {
+	float: right;
+	width: 42px;
+	height: 42px;
+	background: url(images/close.png) no-repeat;
+	cursor: pointer;
+}
+.itoris_productgrid_config_content {
+	margin: 10px;
+}
+.itoris_productgrid_config_section {
+	border-bottom: 1px solid #999999;
+	margin-bottom: 10px;
+	color: #194fff;
+	font-size: 16px;
+	font-weight: bold;
+}
+.itoris_productgrid_config_section li {
+	color: #000000;
+	font-size:12px;
+	font-weight:bold;
+	display: inline-block;
+	width: 215px;
+	vertical-align: top;
+	zoom: 1;
+	*display: inline;
+}
+.itoris_productgrid_config_buttons {
+	height: 20px;
+}
+.itoris_productgrid_button_right {
+	float: right;
+	margin-left: 10px;
+}
+.itoris_productgrid_button_left {
+	float: left;
+	margin-right: 10px;
+}
+.itoris-draggable-table {
+	position:fixed;
+	z-index: 10000;
+	background-color: #000000;
+	opacity: 0.7;
+	color: #ffffff;
+}
+.massaction .entry-edit .field-row label {
+	vertical-align: top;
+}
+.itoris-icons {
+	float: right;
+}
+.itoris-cancel-icon, .itoris-save-icon {
+	float:right;
+	margin-left: 3px;
+	cursor: pointer;
+}
+.itoris-cancel-icon {
+	height: 14px;
+	width: 14px;
+	margin-top: 1px;
+	background: url(images/icon-cancel.gif) no-repeat;
+}
+.itoris-save-icon {
+	height: 16px;
+	width: 16px;
+	background: url(images/icon-save.gif) no-repeat;
+}
+.itoris-inline-edit-ceil-allowed:hover {
+	background-color: #ffd7e5;
+	cursor: pointer;
+}
+.itoris-draggable-ceil-header, .itoris-draggable-ceil-header * {
+	cursor: move;
+}
+a .itoris-ceil-title {
+	cursor: pointer;
+}
+.not-editable-ceil {
+	background-color: #eaeaea;
+}
+#productGrid_massaction-form .clear-both {
+	clear: both !important;
+	float: right !important;
+	margin-bottom: 2px;
+}
+.itoris_productgrid_gallery_buttons {
+	margin: 0 10px 10px;
+	height: 20px;
+}
+#mass_apply_changes, #reload_grid_notice {
+	position: fixed;
+	width: 100%;
+	height: 40px;
+	bottom: 0;
+	left:0;
+}
+#mass_apply_changes .mask, #reload_grid_notice .mask {
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: 0.75;
+	position: absolute;
+	z-index: 5;
+}
+#mass_apply_changes .controls {
+	font-size: 18px;
+	margin: 9px 20px;
+	position: relative;
+	z-index: 10;
+}
+#mass_apply_changes .controls .note, #reload_grid_notice .note {
+	color: #fff;
+}
+#mass_apply_changes .controls button {
+	margin-left: 10px;
+}
+#reload_grid_notice div {
+	font-size: 18px;
+	line-height: 40px;
+	padding-left: 20px;
+	position: relative;
+	z-index: 10;
+}
+#reload_grid_notice button {margin-left: 10px;}
+.itoris-ceil-loading {
+	width: 18px;
+	height: 18px;
+	float:right;
+	background: url(images/loading.gif) top right no-repeat;
+}
+.preview_product_link {
+	width: 24px;
+	height: 24px;
+	background: url(images/preview.png) no-repeat;
+	display: block;
+	margin: 3px auto;
+}
+a.use-default-scope-link {font-size: 10px;line-height: 10px;}
+table td.no-pointer {cursor: default;}

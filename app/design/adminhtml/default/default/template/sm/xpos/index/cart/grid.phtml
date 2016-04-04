@@ -1,0 +1,317 @@
+<?php
+    /**
+     * Magento
+     *
+     * NOTICE OF LICENSE
+     *
+     * This source file is subject to the Academic Free License (AFL 3.0)
+     * that is bundled with this package in the file LICENSE_AFL.txt.
+     * It is also available through the world-wide-web at this URL:
+     * http://opensource.org/licenses/afl-3.0.php
+     * If you did not receive a copy of the license and are unable to
+     * obtain it through the world-wide-web, please send an email
+     * to license@magentocommerce.com so we can send you a copy immediately.
+     *
+     * DISCLAIMER
+     *
+     * Do not edit or add to this file if you wish to upgrade Magento to newer
+     * versions in the future. If you wish to customize Magento for your
+     * needs please refer to http://www.magentocommerce.com for more information.
+     *
+     * @category    design
+     * @package     default_default
+     * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+     * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+     */
+?>
+<?php
+    /**
+     * @see Mage_Adminhtml_Block_Sales_Order_Create_Items_Grid
+     */
+?>
+<?php $orderId = $this->getRequest()->getParam('order_id'); ?>
+<?php $taxDebug = $this->updateTax(); ?>
+<script>
+    var taxR1 = '<?php echo $taxDebug['r1'];?>';
+    var taxR3 = '<?php echo $taxDebug['r3'];?>';
+//    console.log('taxR1 = ' + taxR1 + 'taxR3 = ' + taxR3);
+</script>
+
+<script>
+    serviceProductId = parseInt("<?php echo Mage::helper('xpos/configXPOS')->getGeneral('product_service_id') ?>");
+    function addServiceProduct(){
+        // Set service product Id
+        addOrder(serviceProductId,[]);
+        displayOrder(currentOrder, true, true);
+        selectSearchBox();
+    }
+
+        function showPricePopup(productId,event){
+        var currentCustomer = jQuery('input[name="order[account][type]"]').val();
+
+        if(event.keyCode == 32 && currentCustomer != 'not_allow_guest') {
+            var customerId = jQuery('#order_customer_id').val();
+            new Ajax.Request("<?php echo $this->getUrl('adminhtml/xpos/itemPrice') ?>", {
+                parameters: {
+                    product_id: productId,
+                    customer_id: customerId
+                },
+                onSuccess: function(transport){
+                    var response = transport.responseText.evalJSON();
+                    if(response.html){
+
+                        if(!$('item-price-popup')){
+                            var popup = new Element('div', { 'id': 'item-price-popup'});
+                            $$('body').first().insert(popup);
+                        }
+
+                        $('item-price-popup').update(response.html);
+
+                        jQuery('#item-price-popup').bPopup({
+                            modalClose: true,
+                            opacity: 0.6,
+                            speed: 450,
+                            transition: 'slideIn',
+                            positionStyle: 'fixed'
+                        });
+                    }
+                }
+
+            });
+        }
+    }
+</script>
+
+<?php $_items = $this->getItems(); ?>
+
+<div class="grid" id="order-items_grid">
+    <table cellspacing="0" class="data">
+        <thead>
+        <tr class="headings">
+            <th class="no-link align-left"><span id="add-new-item" onclick="addServiceProduct()"></span><?php echo $this->__('Products') ?></th>
+            <th class="no-link align-center"><?php echo $this->__('Qty') ?></th>
+            <th class="no-link align-center"><?php echo $this->__('Unit In Box') ?></th>
+            <th class="no-link align-center"><?php echo $this->__('Unit Price') ?></th>
+            <th class="no-link align-center"><?php echo $this->__('State Tax') ?></th>
+            <th class="no-link align-center"><?php echo $this->__('County Tax') ?></th>
+            <th class="no-link align-center"><?php echo $this->__('City Tax') ?></th>
+            <th class="no-link align-right"><?php echo $this->__('Total') ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php if (empty($_items)): ?>
+            <tr class="even">
+                <td class="empty-text a-center" colspan="5"><?php echo $this->__('No ordered items') ?>
+                </td>
+            </tr>
+        <?php endif; ?>
+        </tbody>
+    </table>
+</div>
+<?php
+    $bundle = Mage::helper('bundle/catalog_product_configuration');
+    $configurable = Mage::helper('catalog/product_configuration');
+?>
+<?php if (!empty($_items)): ?>
+    <script type="text/javascript">
+        var data = {};
+        var storageList = $.jStorage.get('productData');
+
+        if (storageList != null && storageList != undefined) {
+            data = storageList;
+        }
+        productData = data;
+        currentOrder = {};
+        var orderItem = {};
+        <?php foreach ($_items as $_item):?>
+
+        newOrderItem = {};
+        newOrderItem.id = <?php echo $_item->getProductId()?> + '-' + Object.keys(currentOrder).length;
+        newOrderItem.productId = <?php echo $_item->getProductId()?>;
+        newOrderItem.name = '<?php echo str_replace("'","\'",$_item->getName())?>';
+
+        /** XPOS-2006
+         *
+         */
+        <?php /* ?>
+        <?php if($_item->getProductType()=="bundle"): ?>
+            newOrderItem.bundle_children = [];
+                <?php foreach($_item->getQtyOptions() as $_option): ?>
+                newOrderItem.bundle_children['<?php echo $_option->getProductId(); ?>']
+                    = '<?php echo $_option->getValue() ?>';
+                <?php endforeach; ?>
+        <?php endif; ?>
+        <?php */ ?>
+
+        <?php if($_item->getProductType()=="configurable"): ?>
+        newOrderItem.sku = "<span style='opacity:.6'>" + productData[<?php echo $_item->getProduct()->getId() ?>].sku + "</span> &rsaquo; " + '<?php echo str_replace("'","\'",$_item->getSku()) ?>';
+        newOrderItem.childSku = '<?php echo str_replace("'","\'",$_item->getSku()) ?>';
+        newOrderItem.childQty = productData[<?php echo $_item->getProduct()->getId() ?>]['configProductData']['<?php echo str_replace("'","\'",$_item->getSku()) ?>']['qty'];
+        <?php else: ?>
+        newOrderItem.sku = '<?php echo str_replace("'","\'",$_item->getSku()) ?>';
+        <?php endif;?>
+
+        //newOrderItem.sku = "<span style='opacity:.6'>" + productData[<?php echo $_item->getProduct()->getId(); ?>].sku + "</span> &rsaquo; " + <?php echo $_item->getSku() ?>;
+
+        <?php if($_item->getTaxPercent()):?>
+        newOrderItem.tax = <?php echo $_item->getTaxPercent()?>;
+        <?php else: ?>
+        newOrderItem.tax = 0;
+        <?php endif ?>
+        <?php if($_item->hasOriginalCustomPrice()): ?>
+        newOrderItem.price_name = 'item[' + newOrderItem.id + '][custom_price]';
+        newOrderItem.custom_price = <?php echo $_item->getOriginalCustomPrice()?>;
+        <?php endif; ?>
+        <?php
+            // Price Exclude Tax
+            if (Mage::helper('weee')->typeOfDisplay($_item, array(0, 1, 4), 'sales')) {
+                $_price = $_item->getCalculationPrice() + $_item->getWeeeTaxAppliedAmount() + $_item->getWeeeTaxDisposition();
+            } else {
+                $_price = $_item->getCalculationPrice();
+            }
+            // Price Include Tax
+            $_incl = $this->helper('checkout')->getPriceInclTax($_item);
+            if (Mage::helper('weee')->typeOfDisplay($_item, array(0, 1, 4), 'sales')) {
+                $_priceIncl = $_incl + Mage::helper('weee')->getWeeeTaxInclTax($_item);
+            } else {
+                $_priceIncl = $_incl-$_item->getWeeeTaxDisposition();
+            }
+        ?>
+        newOrderItem.price = <?php echo $_price?>;
+        newOrderItem.priceInclTax = <?php echo $_priceIncl; ?>;
+
+        newOrderItem.options = [];
+        newOrderItem.qty = <?php echo $_item->getQty() * 1 ?>;
+        newOrderItem.subtotal = <?php echo $_item->getRowTotal()?>;
+        newOrderItem.subtotalInclTax = <?php echo $_item->getData('row_total_incl_tax')?>;
+        newOrderItem.class_item = '<?php if($_item->getProductType() == 'configurable' || $_item->getProductType() == 'bundle'){ echo "config item_config item_config-id"; } ?>';
+        newOrderItem.config_change = '<?php if($_item->getProductType() == 'configurable'|| $_item->getProductType() == 'bundle' ){echo "config_change item_config item_config-id" ;}  ?>';
+        newOrderItem.pos = Object.keys(currentOrder).length;
+        //newOrderItem.type = '<?php if($_item->getProductType()=="giftcard") echo "giftcard"; else echo "";?>';
+        newOrderItem.type = '<?php echo $_item->getProductType();?>';
+        <?php
+            if($_item->getProductType()=="configurable"){
+            $infoBuyRequest = $_item->getOptionsByCode();
+        $infoBuyRequest = $infoBuyRequest['info_buyRequest'];
+        $buyRequest = new Varien_Object(unserialize($infoBuyRequest->getValue()));
+        $childData = $buyRequest->getData('super_attribute');
+        /** @var Mage_Catalog_Model_Product_Type_Configurable $productTypeInstance */
+        $productTypeInstance = $_item->getProduct()->getTypeInstance();
+
+        /* XPOS 1927 Package: Blank page after reloading page
+        *
+        */
+        $child_product_id = null;
+        if ($productTypeInstance->getProductByAttributes($childData) != null) {
+            $child_product_id = $productTypeInstance->getProductByAttributes($childData)->getId();
+        }
+            ?>
+        newOrderItem.child_product_id = '<?php echo $child_product_id;?>';
+        <?php } ?>
+        <?php $product = Mage::getModel('catalog/product')->load($_item->getProductId());
+
+            //CAL TAX AMOUNT
+            $price_includes_tax = Mage::getStoreConfig('tax/calculation/price_includes_tax');
+            $productType = $product->getTypeId();
+            $finalPriceValue = $product->getFinalPrice();
+             $tax_amount =0;
+            if($productType != 'giftcard'){
+                $price = $product->getPrice();
+                $finalPrice = $product->getFinalPrice();
+                $calcTax = true;
+                 $tax = Mage::helper('tax');
+                 $finalPriceWithTax = $tax->getPrice($product, $finalPrice, $calcTax);
+                 $taxClassId = $product->getData("tax_class_id");
+                 $taxClasses = Mage::helper("core")->jsonDecode($tax->getAllRatesByProductClass());
+                 $taxRate = isset($taxClasses["value_" . $taxClassId]) ? $taxClasses["value_" . $taxClassId] : 0;
+
+                if($price == $finalPrice){
+                    if($finalPriceWithTax == $price){
+                        if($price_includes_tax ==1){
+                            $priceEx = round(100*$price/($taxRate +100),2);
+                            $tax_amount = $price - $priceEx;
+                        }else{
+                            $tax_amount = round($taxRate*$price/100,2);
+                        }
+                    }
+                    else{
+                        if(floatval($finalPriceWithTax) > floatval($price)){
+                            $tax_amount = floatval($finalPriceWithTax) - floatval($price);
+                        }
+                        else {
+                            $priceEx = round(100*$finalPrice/($taxRate +100),2);
+                            $tax_amount = $finalPrice - $priceEx;
+                        }
+                    }
+                }
+                else{
+                    if($price_includes_tax == 1)
+                    {
+                        $priceEx = round(100*$finalPrice/($taxRate +100),2);
+                        $tax_amount = $finalPrice - $priceEx;
+                    }else{
+                        $tax_amount = $taxRate*$finalPrice/100;
+                    }
+                }
+
+                if ($price_includes_tax == 1) {
+                    $calcTax = false;
+                    $finalPriceWithTax = $product->getFinalPrice();
+                    $price = $finalPrice = $tax->getPrice($product, $finalPriceValue, $calcTax);
+                }
+                else{
+                    $finalPriceWithTax = round($price+$price*$taxRate/100,2);
+                    $tax_amount = $finalPriceWithTax - $price;
+                }
+
+                }
+            //end cal tax amount
+         $stock =  Mage::getModel('cataloginventory/stock_item')->loadByProduct($product);
+         $is_qty_decimal =  $stock->getData('is_qty_decimal');
+
+         $warehouseId = Mage::getSingleton('adminhtml/session')->getWarehouseId();
+           if($warehouseId){
+                 $collection_qty = Mage::getModel('xwarehouse/warehouse_product')->getCollection()
+                                 ->addFieldToFilter('warehouse_id', array('eq' => $warehouseId))
+                                 ->addFieldToFilter('product_id', array('eq'=>$product->getId()));
+                $info_array  = $collection_qty->getData();
+
+                $qtyStock = $info_array[0]['qty'];
+           }else{
+                $qtyStock =$stock->getQty();
+           }
+
+        if($qtyStock <= 0 && ( $product->getTypeId()=="simple")){  ?>
+        newOrderItem.out_stock = 1;
+        <?php  }
+        ?>
+        newOrderItem.taxunit = <?php echo $product->getTaxunit() ?>;
+        newOrderItem.unitinbox  = <?php echo $product->getUnitinbox() ?>;
+        newOrderItem.tax_amount = <?php echo $tax_amount; ?>;
+        newOrderItem.is_qty_decimal = <?php echo $is_qty_decimal ?>;
+
+        <?php
+            $itemOptions = array();
+            foreach($_item->getOptions() as $option){
+                $itemOption = array();
+                $codeParts = explode('_', $option->getCode());
+
+                if($codeParts[0] == 'option' && $codeParts[1] > 0 ){
+                    $index = $codeParts[1];
+                    $itemOption['name'] = 'options[' . $index . ']';
+                    $itemOption['value'] = $option->getValue();
+                    $itemOptions[] = $itemOption;
+                }
+            }
+        ?>
+        newOrderItem.options = JSON.parse('<?php echo $itemOptions ? json_encode($itemOptions) : '[]'?>');
+        currentOrder[newOrderItem.id] = newOrderItem;
+
+        <?php endforeach; ?>
+//        jQuery(document).ready(function () {
+            displayOrder(currentOrder, false);
+            //initScroll("#items_area");
+            jQuery('#items_area').getNiceScroll().doScrollPos(0, 100000);
+//        });
+    </script>
+<?php endif; ?>

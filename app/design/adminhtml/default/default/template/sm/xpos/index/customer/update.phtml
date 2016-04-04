@@ -1,0 +1,103 @@
+<fieldset class="np">
+    <label class="no-float"><?php echo $this->__('Customer Account Info'); ?></label>
+    <div class="content">
+        <div id="update-customer-message"></div>
+        <ul class="list-item no-hover">
+            <input type="hidden" id="update_customer_id">
+            <li>
+                <input type="text" id="update_customer_firstname" placeholder="<?php echo $this->__('First Name'); ?>"/>
+            </li>
+            <li>
+                <input type="text" id="update_customer_lastname" placeholder="<?php echo $this->__('Last Name'); ?>"/>
+            </li>
+            <li>
+                <input type="email" id="update_customer_email" placeholder="<?php echo $this->__('Email'); ?>"/>
+            </li>
+            <li>
+                <input type="text" id="update_customer_cellphonenumber" placeholder="<?php echo $this->__('Cell Phone Number'); ?>"/>
+            </li>
+        </ul>
+        <div class="action">
+            <button type="button" id="" class="smart-btn" onclick="updateCustomerInfo()"><?php echo $this->__('Update'); ?></button>
+        </div>
+    </div>
+</fieldset>
+<script>
+    function updateCustomerInfo(){
+        var id = $('update_customer_id').value;
+        var fname = $('update_customer_firstname').value;
+        var lname = $('update_customer_lastname').value;
+        var email = $('update_customer_email').value;
+        var cellphonenumber = $('update_customer_cellphonenumber').value;
+
+        var message = '';
+
+        if(!cellphonenumber){
+            message += 'Cell Phone Number is required field';
+        }
+
+        if(email && !IsEmail(email)){
+            message += '\r\nInvalid email!';
+        }
+
+        if(message){
+            alert(message);
+            return;
+        }
+
+        new Ajax.Request("<?php echo $this->getUrl('adminhtml/account/update') ?>",{
+            parameters: {
+                'customer_id' : id,
+                'account[firstname]' : fname,
+                'account[lastname]' : lname,
+                'account[email]' : email,
+                'account[cellphonenumber]' : cellphonenumber,
+            },
+            onSuccess: function(transport) {
+                if (transport.responseText) {
+                    var response = transport.responseText.evalJSON();
+                    $('update-customer-message').update(response.message);
+                    document.getElementById("update-customer-message").scrollIntoView();
+                    jQuery('#customer_search_autocomplete ul').html('');
+                    jQuery('#customer_search_field').val('');
+                }
+            }
+        });
+    }
+    function update_customer_address(){
+        var data = {};
+        var inputs = jQuery('#shipping-details input[name^="order[shipping_address]"], #shipping-details select[name^="order[shipping_address]"]');
+        jQuery.each(inputs, function(key, e){
+            var name = jQuery(e).attr('name').replace('order[shipping_address][', '').replace(']','');
+            var value = jQuery(e).val();
+            data[name] = value;
+
+            // Chagne billing fields value too
+            var billingName = jQuery(e).attr('name').replace('shipping_address', 'billing_address');
+            var billingField = $$('input[name="'+ billingName +'"], select[name="'+ billingName +'"]').first()
+            if(billingField){
+                billingField.value = value;
+            }
+        });
+        var addressId = jQuery('#customer_shipping_address_list option:selected').attr('address_id');
+        var customerId = jQuery('#update_customer_id').val();
+
+        if(addressId && customerId){
+            data.id = addressId;
+            data.customer_id = customerId;
+            new Ajax.Request("<?php echo $this->getUrl('adminhtml/account/updateAddress') ?>",{
+                parameters: data,
+                onSuccess: function(transport) {
+                    if (transport.responseText) {
+                        var response = transport.responseText.evalJSON();
+                        $('update-customer-address-message').update(response.message);
+                        document.getElementById("update-customer-address-message").scrollIntoView();
+                        jQuery('#customer_search_autocomplete ul').html('');
+                        jQuery('#customer_search_field').val('');
+                    }
+                }
+            });
+        }
+
+    }
+</script>

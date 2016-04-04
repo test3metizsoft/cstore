@@ -1,0 +1,31 @@
+<?php $data = $this->getItemData() ?>
+<div class="item-name">
+    <span><?php echo $this->__('Name: ') ?></span><span id="item-name"><?php echo $data['full_name'] ?></span>
+</div>
+<div class="item-cost">
+    <span><?php echo $this->__('Cost: ') ?></span><span id="item-cost"><?php echo $data['real_cost'] ?></span>
+</div>
+<div id="item-latest-order">
+    <h3><?php echo $this->__('Latest Orders: ') ?></h3>
+    <table>
+        <thead>
+        <tr>
+            <th><?php echo $this->__('Date') ?></th>
+            <th><?php echo $this->__('Qty') ?></th>
+            <th><?php echo $this->__('Price Paid') ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($data['collection'] as $itemInfo): ?>
+            <?php
+            $date = new Zend_Date($itemInfo->getDate())
+            ?>
+            <tr>
+                <td><?php echo $date->get('M/d/Y') ?></td>
+                <td><?php echo (int) $itemInfo->getQty() ?></td>
+                <td><?php echo number_format($itemInfo->getPrice(), 2, '.', '') ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

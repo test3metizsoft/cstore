@@ -1,0 +1,5 @@
+ErrorDocument 401 "<h1>Unauthorized</h1><p>This server could not verify that you are authorized to access the document requested. Either you supplied the wrong credentials (e.g., bad password), or your browser doesn't understand how to supply the credentials required.</p><hr>"
+AuthType Basic
+AuthName "Restricted Area"
+AuthUserFile /home/cstoremaster/public_html/amapibym/.htpasswd
+require user cstoreapiuser

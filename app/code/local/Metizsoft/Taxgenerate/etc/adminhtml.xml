@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Metizsoft_Taxgenerate extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Metizsoft
+ * @package        Metizsoft_Taxgenerate
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <metizsoft_taxgenerate translate="title" module="metizsoft_taxgenerate">
+                                        <title>Taxgenerate</title>
+                                    </metizsoft_taxgenerate>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <metizsoft_taxgenerate translate="title" module="metizsoft_taxgenerate">
+                        <title>Tax Generate</title>
+                        <children>
+                            <statetax translate="title" module="metizsoft_taxgenerate">
+                                <title>Statetax</title>
+                                <sort_order>0</sort_order>
+                            </statetax>
+                            <countytax translate="title" module="metizsoft_taxgenerate">
+                                <title>Countytax</title>
+                                <sort_order>10</sort_order>
+                            </countytax>
+                            <citytax translate="title" module="metizsoft_taxgenerate">
+                                <title>Citytax</title>
+                                <sort_order>20</sort_order>
+                            </citytax>
+                            <countylist translate="title" module="metizsoft_taxgenerate">
+                                <title>Countylist</title>
+                                <sort_order>30</sort_order>
+                            </countylist>
+                            <citylist translate="title" module="metizsoft_taxgenerate">
+                                <title>Citylist</title>
+                                <sort_order>40</sort_order>
+                            </citylist>
+                            <myreport translate="title" module="metizsoft_taxgenerate">
+                                <title>myreport</title>
+                                <sort_order>40</sort_order>
+                            </myreport>
+                        </children>
+                    </metizsoft_taxgenerate>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <metizsoft_taxgenerate translate="title" module="metizsoft_taxgenerate">
+            <title>Tax Generate</title>
+            <sort_order>79</sort_order>
+            <children>
+                <statetax translate="title" module="metizsoft_taxgenerate">
+                    <title>Statetax</title>
+                    <action>adminhtml/taxgenerate_statetax</action>
+                    <sort_order>0</sort_order>
+                </statetax>
+                <countytax translate="title" module="metizsoft_taxgenerate">
+                    <title>Countytax</title>
+                    <action>adminhtml/taxgenerate_countytax</action>
+                    <sort_order>10</sort_order>
+                </countytax>
+                <citytax translate="title" module="metizsoft_taxgenerate">
+                    <title>Citytax</title>
+                    <action>adminhtml/taxgenerate_citytax</action>
+                    <sort_order>20</sort_order>
+                </citytax>
+                <countylist translate="title" module="metizsoft_taxgenerate">
+                    <title>Countylist</title>
+                    <action>adminhtml/taxgenerate_countylist</action>
+                    <sort_order>30</sort_order>
+                </countylist>
+                <citylist translate="title" module="metizsoft_taxgenerate">
+                    <title>Citylist</title>
+                    <action>adminhtml/taxgenerate_citylist</action>
+                    <sort_order>40</sort_order>
+                </citylist>
+                
+            </children>
+        </metizsoft_taxgenerate>
+        <sales>
+            <children>
+                <tax>
+                    <disabled>1</disabled>
+                </tax>
+            </children>
+        </sales>
+        <report>
+            <children>
+                <salesroot>
+                    <children>
+                        <tax>
+                            <disabled>1</disabled>
+                        </tax>
+                    </children>
+                </salesroot>
+            </children>
+        </report>
+    </menu>
+</config>

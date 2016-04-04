@@ -1,0 +1,58 @@
+<script type="text/javascript">
+    (function($, window) {
+        'use strict';
+        $.widget('lotusbreath.onestepcheckout', $.lotusbreath.onestepcheckout, {
+            options : {
+                credit : {
+                    applyCreditBtn : "#apply_credit_btn",
+                    cancelCreditBtn : "#cancel_credit_btn"
+                }
+            },
+            _submitCredit : function(isApply){
+                var _this = this;
+                var params = $("#checkout_form").serializeArray();
+                params[params.length] =  {'name' : 'step', 'value': 'update_location_billing'};
+                // params[params.length] =  {'name' : 'update', 'value': 'payment_method'} ;
+                params[params.length] =  {'name' : 'credit', 'value': isApply};
+                $.ajax({
+                    url : _this.options.saveStepUrl,
+                    type : 'POST',
+                    data : params,
+                    beforeSend : function(){
+                        _this._loadWait('payment_partial');
+                    },
+                    complete : function (response){
+                        try{
+                            var responseObject = $.parseJSON(response.responseText);
+
+                        }catch(ex){
+
+                            _this._removeWait();
+                            return false;
+                        }
+
+
+                        _this._updateHtml(responseObject);
+
+                    }
+
+                });
+            },
+            _create : function() {
+                this._super();
+                var _this = this;
+                this.element
+                    .on( 'click', _this.options.credit.applyCreditBtn  ,
+                    function (event){
+                        _this._submitCredit(1);
+
+                    })
+                    .on('click', _this.options.credit.cancelCreditBtn ,function(){
+                        _this._submitCredit(0);
+                    })
+                ;
+            }
+
+        });
+    })(jQuery, window);
+</script>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<package>
+    <name>HelloWired_Free_Theme_1_4</name>
+    <version>3.0.0</version>
+    <stability>stable</stability>
+    <license uri="http://www.opensource.org/licenses/gpl-license.php">GNU General Public License (GPL)</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Say Hello to HelloWired, take your store to the next level with this great free theme.</summary>
+    <description>&lt;p&gt;Say Hello to &lt;a href="http://www.hellothemes.com/themes/hellowired/"&gt;HelloWired&lt;/a&gt;, take your store to the next level with this great free theme. The theme itself has some great features to mess around with! It really is perfect for store owners seeking for simplicity, and for those who want a really slick theme to build their new Magento design upon!&lt;/p&gt;&#xD;
+&lt;p&gt;Before downloading, please take your time and read the themes license:&lt;/p&gt;&#xD;
+&lt;p&gt;&lt;a href="http://creativecommons.org/licenses/by/3.0/"&gt;Creative Common License&lt;/a&gt;&lt;/p&gt;&#xD;
+&lt;h3&gt;&lt;span&gt;Theme Features&lt;/span&gt;&lt;/h3&gt;&#xD;
+&lt;p&gt;These are some of the features this theme includes:&lt;/p&gt;&#xD;
+&lt;ul&gt;&#xD;
+&lt;li&gt;Frontpage slider to showcase latest products or special offers.&lt;/li&gt;&#xD;
+&lt;li&gt;Customers can keep track of there cart at all times, easily noticable.&lt;/li&gt;&#xD;
+&lt;li&gt;Pretty jQuery popup, lightbox and slider included throughout the entire store.&lt;/li&gt;&#xD;
+&lt;li&gt;Can be converted into multiple language.&lt;/li&gt;&#xD;
+&lt;li&gt;Custom store links built in so you can add your own CMS pages.&lt;/li&gt;&#xD;
+&lt;li&gt;Free Installation Intructions&lt;/li&gt;&#xD;
+&lt;li&gt;Supports all major browsers (IE6,IE7,IE8,FF2,FF3,Opera,Safari)&lt;/li&gt;&#xD;
+&lt;/ul&gt;&#xD;
+&lt;h3&gt;&lt;span&gt;View Demonstration&lt;/span&gt;&lt;/h3&gt;&#xD;
+&lt;p&gt;&lt;a title="Test drive HelloWired for yourself!" href="http://www.hellothemes.com/demo/?theme=hellowired"&gt;Test drive HelloWired for yourself!&lt;/a&gt;&lt;/p&gt;&#xD;
+&lt;h3&gt;&lt;span&gt;Show us your Appreciation&lt;/span&gt;&lt;/h3&gt;&#xD;
+&lt;p&gt;Show us your appreciation and &lt;a href="http://www.twitter.com/hellothemes"&gt;follow us on Twitter @HelloThemes&lt;/a&gt;&lt;/p&gt;&#xD;
+&lt;h3&gt;&lt;span&gt;Like us on Facebook&lt;/span&gt;&lt;/h3&gt;&#xD;
+&lt;p&gt;Spread the HelloThemes love by &lt;a href="http://facebook.com/hellothemes"&gt;liking us on Facebook.&lt;/a&gt;Welcome to HelloCommunity!!!&lt;/p&gt;&#xD;
+&lt;h3&gt;&lt;span&gt;Theme Documentation&lt;/span&gt;&lt;/h3&gt;&#xD;
+&lt;p&gt;To view our detailed free theme documentation, please visit our &lt;a href="http://www.hellothemes.com/support/documentation/hellowired-documentation/"&gt;Support section&lt;/a&gt;.&lt;/p&gt;&#xD;
+&lt;h3&gt;&lt;span&gt;PSD (Photoshop Files)&lt;/span&gt;&lt;/h3&gt;&#xD;
+&lt;p&gt;&lt;span&gt;To download the PSD files for HelloWired, you will need to signup and download it over at &lt;a title="Magento Themes" href="http://www.hellothemes.com"&gt;HelloThemes&lt;/a&gt;.&lt;/span&gt;&lt;/p&gt;&#xD;
+&lt;h3&gt;&lt;span&gt;Disclaimer&lt;/span&gt;&lt;/h3&gt;&#xD;
+&lt;p&gt;This is a FREE theme and we have released it as it is under the &lt;a href="http://creativecommons.org/licenses/by/3.0/"&gt;Creative Common License&lt;/a&gt;. This theme does not include any support. Support is only available to HelloThemes members only. E-mail and comments will be ingnored if requesting for support. For support questions you will need to &lt;a title="Become a Member" href="http://www.hellothemes.com/pricing/"&gt;become a member&lt;/a&gt;. find out more by viewing our &lt;a href="http://www.hellothemes.com/pricing/"&gt;pricing details&lt;/a&gt;.&lt;/p&gt;&#xD;
+&lt;ul&gt;&#xD;
+&lt;/ul&gt;</description>
+    <notes>Free Responsive Theme, ready for Magento 1.7</notes>
+    <authors><author><name>HelloThemes.com</name><user>hellothemes</user><email>sales@hellothemes.com</email></author></authors>
+    <date>2013-05-14</date>
+    <time>18:38:15</time>
+    <contents><target name="mage"><file name="footer.php" hash="508344308298cdcf9b803f7a8aeeaa07"/></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

@@ -1,0 +1,105 @@
+<?php /* @var $this Mage_Adminhtml_Block_Sales_Order_Create_Billing_Method_Form */ ?>
+<?php if ($this->hasMethods()) {
+    if (!$this->getSelectedMethodCode()) {
+        $defaultMethod = Mage::getStoreConfig('xpos/general/default_payment', null);
+        if ($defaultMethod || array_key_exists($defaultMethod, $this->getMethods())) {
+            $this->getQuote()->getPayment()->setMethod($defaultMethod);
+        } else {
+            $defaultMethod = current(array_keys($this->getMethods()));
+            $this->getQuote()->getPayment()->setMethod($defaultMethod);
+        }
+    }
+    ?>
+    <?php
+    function selectonSrotAscending($arr)
+    {
+        $numOfArr = count($arr);
+        for ($i = 0; $i < $numOfArr - 1; $i++) {
+            $min = $i;
+            for ($j = $i + 1; $j < $numOfArr; $j++) {
+                if ($arr[$i]['_data']['sort_order'] > $arr[$j]['_data']['sort_order']) {
+                    $min = $j;
+                }
+            }
+            $temp = $arr[$min];
+            $arr[$min] = $arr[$i];
+            $arr[$i] = $temp;
+        }
+        return $arr;
+    }
+
+    ?>
+    <div id="order-billing_method_form">
+        <div class="payment-methods">
+            <?php
+            $_methods = $this->getMethods();
+            $_methods = selectonSrotAscending($_methods);
+            $_methodsCount = count($_methods);
+            $_counter = 0;
+            ?>
+            <?php foreach ($_methods as $_method) {
+                $_code = $_method->getCode();
+                $_counter++; ?>
+                <div id="p_method_<?php echo $_code ?>"
+                     class="payment-method-item checkout-item <?php if ($this->getSelectedMethodCode() == $_code) {
+                         echo "active";
+                     } ?>">
+                    <?php if ($_methodsCount > 1) { ?>
+                        <span
+                            onclick="payment.switchMethod('<?php echo $_code ?>'); clearInput(); select_payment_method('<?php echo $_code ?>')"
+                            id="<?php echo $_code ?>_title">
+                            <?php echo $this->htmlEscape($_method->getTitle()) ?>
+                        </span>
+                    <?php } else { ?>
+                        <span>
+                            <?php echo $this->__("No Payment Methods") ?>
+                        </span>
+                    <?php } ?>
+                </div>
+                <?php if ($_code == 'ccsave') { ?>
+                    <div class="ccsave-block" style="display: none;">
+                        <?php echo $this->getChild('payment.method.' . $_code)->setTemplate('sm/xpos/index/payment/ccsave.phtml')->toHtml() ?>
+                    </div>
+                <?php } else {
+                    if ($_code != 'checkmo') { ?>
+                        <?php echo ($resullt = $this->getChildHtml('payment.method.' . $_code)); ?>
+                    <?php }
+                } ?>
+            <?php } ?>
+        </div>
+        <div id="payment_method_validate"></div>
+        <input id="payment_method_hidden" name="payment[method]" value="<?php if($this->getSelectedMethodCode() != false && $this->getSelectedMethodCode() !=''){
+            echo $this->getSelectedMethodCode();
+        }else {
+            echo Mage::getStoreConfig('xpos/general/default_payment');
+        } ?>"
+               type="hidden"/>
+    </div>
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function () {
+            var payment_method_selected = '<?php echo $this->getSelectedMethodCode() ?>';
+            if (payment_method_selected != 'free' && payment_method_selected != '') {
+                order.setPaymentMethod('<?php echo $this->getSelectedMethodCode() ?>');
+                show_payment_block(payment_method_selected);
+            } else {
+                if (payment_method_selected == 'free') {
+                    jQuery("#payment_method_hidden").val('checkmo');
+                    jQuery("#p_method_checkmo").addClass('active');
+                    if (jQuery("#p_method_checkmo").length > 0) {
+                        jQuery("#payment_detail").html("Check / Money order ");
+                    }
+                }else{
+                    jQuery("#payment_method_hidden").val('<?php echo Mage::getStoreConfig('xpos/general/default_payment')?>');
+                }
+
+            }
+            jQuery("#payment_method_hidden").removeAttr('disabled');
+        });
+
+
+    </script>
+<?php } else { ?>
+    <?php echo $this->__("No Payment Methods") ?>
+<?php } ?>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Zestard_Customization>
+            <version>1.0.0</version>
+        </Zestard_Customization>
+    </modules>
+    <global>
+        <models>
+            <Zestard_Customization>
+                <class>Zestard_Customization_Model</class>
+            </Zestard_Customization>
+        </models>
+        <blocks>
+            <customization>
+                <class>Zestard_Customization_Block</class>
+            </customization>
+            <adminhtml>
+                <rewrite>
+                    <customer_grid>Zestard_Customization_Block_Customer_Grid</customer_grid>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        <helpers>
+            <customization>
+                <class>Zestard_Customization_Helper</class>
+            </customization>
+        </helpers>
+    </global>
+</config>

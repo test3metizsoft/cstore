@@ -1,0 +1,21 @@
+<?php
+/**
+ * @var $this Magebuzz_Catsidebarnav_Block_Sidebar
+ */
+?>
+<?php $_helper = Mage::helper('catsidebarnav'); ?>
+<?php $_menu = $this->renderCategoriesMenuHtml(0,'level-top') ?>
+<?php if($_helper->isEnabled()): ?>
+  <?php if($_menu): ?>
+  <div class="block block-category-nav">
+    <div class="block-title">
+    <strong><span><?php echo $this->__('Categories') ?></span></strong>
+    </div>
+    <div class="block-content">
+    <ul id="category-sidebar-nav" class="category-sidebar-nav">
+      <?php echo $_menu ?>
+    </ul>
+    </div>
+  </div>
+  <?php endif ?>
+<?php endif ?>

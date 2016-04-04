@@ -1,0 +1,59 @@
+<ul>
+    <?php foreach ($items as $item) { ?>
+        <li <?php foreach ($item as $k => $v) { ?><?php
+            $entityId = false;
+            if ($item['m_a'] && $item['m_a']['entity_id']) {
+                $entityId = $item['m_a']['entity_id'];
+            }
+            if ($k != 'addresses') echo $k . '="' . $v . '" ';
+            else {
+                echo $k . '="' . count($v) . '" ';
+                $count = 0;
+                foreach ($v as $key => $add) {
+                    foreach ($add as $kk => $i) {
+                        echo $kk . $count . '="' . $i . '" ';
+
+                    }
+                    if ($entityId && $add['entity_id'] && $entityId == $add['entity_id']) {
+                        echo  ' matchCount="' . $count . '" ';
+                        $entityId = false;
+                    }
+                    $count++;
+                }
+
+            }
+        }
+        ?>>
+            <?php $name = $item['name'];
+            if ($item['m_a'] && $item['m_a']['entityname']) {
+                $name = $item['m_a']['entityname'];
+            }
+            $length = strlen($name);
+            if ($length > 20) {
+                $newName = substr($name, 0, 20);
+                $newName .= '...';
+            } else $newName = $name;
+
+            $company = '';
+            if ($item['m_a'] && $item['m_a']['company']) {
+                $company = $item['m_a']['company'];
+            }
+
+            $length = strlen($company);
+            if ($length > 24) {
+                $company = substr($company, 0, 21);
+                $company .= '...';
+            }
+
+
+            ?>
+            <span style="width: 50%; overflow: hidden; "
+                  class="name-customer"><?php echo $this->htmlEscape($newName) ?></span>
+            <span style=" overflow: hidden;float:left !important; "
+                  class="email-customer"><?php echo $company ?></span>
+        </li>
+    <?php } ?>
+    <?php if (count($items) == 0) { ?>
+        <li id="no_result"><span><?php echo $this->__("No matching results") ?></span></li>
+    <?php } ?>
+</ul>

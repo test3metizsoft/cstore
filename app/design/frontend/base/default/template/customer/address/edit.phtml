@@ -1,0 +1,271 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Edit customer address template
+ *
+ * @see Mage_Customer_Block_Address_Edit
+ */
+?>
+<?php if($this->getTitle()): ?>
+<div class="page-title">
+    <h1><?php echo $this->getTitle() ?></h1>
+</div>
+<?php endif; ?>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="form-validate">
+    <div class="fieldset">
+    <?php echo $this->getBlockHtml('formkey')?>
+    <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+    <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+        <h2 class="legend"><?php echo $this->__('Contact Information') ?></h2>
+        <ul class="form-list">
+            <li class="fields">
+                <?php echo $this->getNameBlockHtml() ?>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="company"><?php echo $this->__('Company') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="company" id="company" title="<?php echo $this->__('Company') ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getCompany()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('company') ?>" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="entityname" class="required"><em>*</em><?php echo $this->__('Entity name') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="entityname" value="<?php echo $this->escapeHtml($this->getAddress()->getEntityname()) ?>" title="<?php echo $this->__('Entity name') ?>" class="input-text  <?php echo $this->helper('customer/address')->getAttributeValidationClass('entityname') ?>" id="entityname" />
+                        <input type="hidden" name="telephone" value="<?php echo $this->escapeHtml($this->getCustomer()->getCellphonenumber()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text  <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="telephone" />
+                    </div>
+                </div>
+                
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="salestaxid"><?php echo $this->__('Sales Tax ID') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="salestaxid" id="salestaxid" title="<?php echo $this->__('Sales Tax ID') ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getSalestaxid()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('salestaxid') ?>" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="fax"><?php echo $this->__('Fax') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="fax" id="fax" title="<?php echo $this->__('Fax') ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" />
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="fieldset">
+        <h2 class="legend"><?php echo $this->__('Address') ?></h2>
+        <ul class="form-list">
+        <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+            <li class="wide">
+                <label for="street_1" class="required"><em>*</em><?php echo $this->__('Street Address') ?></label>
+                <div class="input-box">
+                    <input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" class="input-text <?php echo $_streetValidationClass ?>" />
+                </div>
+            </li>
+        <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
+        <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
+            <li class="wide">
+                <div class="input-box">
+                    <input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet($_i)) ?>" title="<?php echo $this->__('Street Address %s', $_i) ?>" id="street_<?php echo $_i ?>" class="input-text <?php echo $_streetValidationClass ?>" />
+                </div>
+            </li>
+        <?php endfor; ?>
+            <?php if ($this->helper('customer/address')->isVatAttributeVisible()) : ?>
+            <li class="wide">
+                <label for="vat_id"><?php echo $this->__('VAT Number') ?></label>
+                <div class="input-box">
+                    <input type="text" name="vat_id" value="<?php echo $this->escapeHtml($this->getAddress()->getVatId()) ?>" title="<?php echo $this->__('VAT Number') ?>" id="vat_id" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('vat_id') ?>" />
+                </div>
+            </li>
+            <?php endif; ?>
+            <li class="fields">
+                <div class="field">
+                    <label for="region_id" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
+                    <div class="input-box">
+                        <select onchange="getcounty(this)" id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
+                           <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                        </select>
+                        <script type="text/javascript">
+                        //<![CDATA[
+                            $('region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
+                        //]]>
+                        </script>
+                        <input type="text" id="region" name="region" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="statecounty" class="required"><em>*</em><?php echo $this->__('County') ?></label>
+                    <div class="input-box">
+                        <select onchange="getcity(this)" id="statecounty" name="statecounty" title="<?php echo $this->__('County') ?>" class="validate-select">
+                            <option value=""><?php echo $this->__('Please Select County') ?></option>
+                            <?php if($this->escapeHtml($this->getAddress()->getStatecounty())): ?>
+                            <option selected="selected" value="<?php echo $this->escapeHtml($this->getAddress()->getStatecounty()) ?>"><?php echo $this->escapeHtml($this->getAddress()->getStatecounty()) ?></option>
+                            <?php endif; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="city" class="required"><em>*</em><?php echo $this->__('City') ?></label>
+                    <div class="input-box">
+                        <select id="shipping_city" name="city" title="<?php echo $this->__('City') ?>" class="validate-select">
+                            <option value=""><?php echo $this->__('Please select city') ?></option>
+                            <?php if ($this->escapeHtml($this->getAddress()->getCity())): ?>
+                                <option selected="selected" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()); ?>"><?php echo $this->escapeHtml($this->getAddress()->getCity()); ?></option>
+                            <?php endif; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="zip" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" />
+                    </div>
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <?php $attribute = Mage::getModel('eav/config')->getAttribute('customer_address','outofcityarea'); ?>
+                    <label for="outofcityarea" class="<?php if($attribute->getIsRequired() == true){?>required<?php } ?>"><?php if($attribute->getIsRequired() == true){?><em>*</em><?php } ?><?php echo $this->__('Store in City Limit') ?></label>
+                    <div class="input-box">
+                        <select name="outofcityarea" id="school" class="<?php if($attribute->getIsRequired() == true){?>required-entry<?php } ?>">
+                        <?php
+                            $options = $attribute->getSource()->getAllOptions();
+                            if($this->getAddress()->getOutofcityarea() != ''){
+                                $select = $this->getAddress()->getOutofcityarea();
+                            }else{
+                                $select = '10';
+                            }
+                            foreach($options as $option){
+                        ?>
+                            <option value='<?php echo $option['value']?>' <?php if($select == $option['value']){ echo 'selected="selected"';}?>><?php echo $this->__($option['label'])?></option>
+                        <?php } ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="field" style="display: none;">
+                    <label for="country" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
+                    <div class="input-box">
+                        <?php echo $this->getCountryHtmlSelect() ?>
+                    </div>
+                </div>
+            </li>
+            <li<?php if($this->canSetAsDefaultBilling()) echo ' class="control"' ?>>
+                <?php if($this->isDefaultBilling()): ?>
+                    <strong><?php echo $this->__('Default Billing Address') ?></strong>
+                <?php elseif($this->canSetAsDefaultBilling()): ?>
+                    <input type="checkbox" id="primary_billing" name="default_billing" value="1" title="<?php echo $this->__('Use as My Default Billing Address') ?>" class="checkbox" /><label for="primary_billing"><?php echo $this->__('Use as my default billing address') ?></label>
+                <?php else: ?>
+                    <input type="hidden" name="default_billing" value="1" />
+                <?php endif; ?>
+            </li>
+            <li<?php if($this->canSetAsDefaultShipping()) echo ' class="control"' ?>>
+                <?php if($this->isDefaultShipping()): ?>
+                    <strong><?php echo $this->__('Default Shipping Address') ?></strong>
+                <?php elseif($this->canSetAsDefaultShipping()): ?>
+                    <input type="checkbox" id="primary_shipping" name="default_shipping" value="1" title="<?php echo $this->__('Use as My Default Shipping Address') ?>" class="checkbox" /><label for="primary_shipping"><?php echo $this->__('Use as my default shipping address') ?></label>
+                <?php else: ?>
+                    <input type="hidden" name="default_shipping" value="1" />
+                <?php endif; ?>
+            </li>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+        <button data-action="save-customer-address" type="submit" title="<?php echo $this->__('Save Address') ?>" class="button"><span><span><?php echo $this->__('Save Address') ?></span></span></button>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+    new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+//]]>
+function getcounty(selectElement){
+    var reloadurl = '<?php echo Mage::getUrl('getcitys/index/statecounty'); ?>';
+    new Ajax.Request(reloadurl, {
+        method: 'get',
+        parameters: {state: selectElement.value},
+        onLoading: function (stateform) {
+            $('statecounty').update('Searching...');
+        },
+        onComplete: function(stateform) {
+            $('statecounty').update(stateform.responseText);
+            $('shipping_city').update('<option>Please Select City</option>');
+        }
+    });
+}
+function getcity(selectElement) {
+        var reloadurl = '<?php echo Mage::getUrl('getcitys'); ?>';
+        new Ajax.Request(reloadurl, {
+            method: 'get',
+            parameters: {county: selectElement.value},
+            onLoading: function (stateform) {
+                $('shipping_city').update('Searching...');
+            },
+            onComplete: function (stateform) {
+                $('shipping_city').update(stateform.responseText);
+            }
+        });
+    }
+getdefaultcounty();
+getdefaultcity();
+function getdefaultcounty(){
+    var region_id = jQuery('#region_id').val();
+    var statecounty = jQuery('#statecounty').val();
+    var reloadurl = '<?php echo Mage::getUrl('getcitys/index/statecounty'); ?>';
+    new Ajax.Request(reloadurl, {
+        method: 'get',
+        parameters: {state: region_id},
+        onLoading: function (stateform) {
+            $('statecounty').update('Searching...');
+        },
+        onComplete: function(stateform) {
+            $('statecounty').update(stateform.responseText);
+            jQuery('#statecounty option[value="'+statecounty+'"]').prop('selected', true);
+        }
+    });
+}
+function getdefaultcity(){
+    var statecounty = jQuery('#statecounty').val();
+    var shipping_city = jQuery('#shipping_city').val();
+    var reloadurl = '<?php echo Mage::getUrl('getcitys'); ?>';
+    new Ajax.Request(reloadurl, {
+            method: 'get',
+            parameters: {county: statecounty},
+            onLoading: function (stateform) {
+                $('shipping_city').update('Searching...');
+            },
+            onComplete: function (stateform) {
+                $('shipping_city').update(stateform.responseText);
+                jQuery('#shipping_city option[value="'+shipping_city+'"]').prop('selected', true);
+            }
+        });
+}
+</script>

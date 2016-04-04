@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<config>
+	<menu>
+		<system>
+			<children>
+				<itoris_extensions>
+					<children>
+						<productgrid translate="title" module="itoris_productgrid">
+							<title>Advanced Product Grid</title>
+							<action>itoris_productgrid/admin_settings</action>
+							<sort_order>60</sort_order>
+						</productgrid>
+					</children>
+				</itoris_extensions>
+			</children>
+		</system>
+	</menu>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<itoris_extensions>
+								<children>
+									<productgrid translate="title" module="itoris_productgrid">
+										<title>Advanced Product Grid</title>
+									</productgrid>
+								</children>
+							</itoris_extensions>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

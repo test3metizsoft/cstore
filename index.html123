@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 10)|!(IE)]><!-->
+<html lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">  
+     <meta charset="utf-8">
+     <meta http-equiv="cleartype" content="on">
+     <meta name="robots" content="index,follow">
+      
+     <title>Cstoremaster</title>
+        
+     
+  
+     <link href="css/css.css" rel="stylesheet" type="text/css">
+
+     <!-- Mobile Specific Metas -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+
+     <!-- Stylesheets -->
+    <link href="css/css_002.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="canonical" href="http://salontaj-2.myshopify.com/password">
+    <script src="js/jquery.js"></script>
+
+</head>
+<body id="password-page-bg">
+
+    <div id="password-container" class="center">
+      
+        <div class="password-page-row">
+          <div class="password-page-col">
+              <img class="password-logo" src="img/logo.png" alt="salontaj">
+          </div>
+        </div>
+      
+      <div class="password-page-row">
+        <div class="password-page-col">
+          <h2 class="password-page-message">Opening Soon</h2>
+        </div>
+      </div>
+      
+      
+      <div class="password-page-row">
+        <div class="password-page-col password-social">
+            <h3 class="password-page-follow">Spread the word</h3>
+            <ul class="social_icons">
+              
+                
+                
+                
+                
+                
+                
+
+                
+                
+                
+                
+                
+                
+                
+                
+                
+
+                
+
+                
+          </ul>
+        </div>
+      </div>
+      
+      <div class="password-page-row">
+        <div class="password-page-col">
+          <h3 class="password-page-follow">Find out when we open</h3>
+          <div class="newsletter ">
+  <p class="message"></p>
+      
+    <form method="post" action="" class="contact-form" accept-charset="UTF-8"><input value="customer" name="form_type" type="hidden"><input name="utf8" value="✓" type="hidden">
+       
+     
+       <input name="contact[tags]" value="prospect,password page" type="hidden">
+       
+       <input class="contact_email" name="contact[email]" required pattern="[^ @]*@[^ @]*" placeholder="Enter your email address..." type="email">
+       <input class="action_button sign_up" value="Sign Up" type="submit">
+     </form>
+  
+</div>
+        </div>
+      </div>
+  <div class="password-page-row">
+      <div class="password-page-col">
+        <div class="password-footer">
+          <div class="powered">        
+            © 2015 BIGBAZAREXPRESS.<!--<br>
+            Designed by <a href="http://outofthesandbox.com/" target="_blank" title="Retina Shopify Theme by Out of the Sandbox">Out of the Sandbox</a>.<br>
+            </div>
+          <div class="shopify">
+              This shop will be powered by <a href="https://www.shopify.com/" target="_blank">Shopify</a>
+            </div>-->
+        </div>
+       </div>
+    </div>
+  </div>
+
+<div class="overlay overlay-data">
+<span class="close-me controls"><div class="pass-close fancybox-close"><a href="#"></a></div></span>
+<div class="modalbox">
+  <div class="inputbox">
+    <form method="post" action="http://bigbazarexpress.com/" id="login_form" class="storefront-password-form" accept-charset="UTF-8">
+		
+		<label for="password">Password </label>
+		<input name="password" id="password" autofocus placeholder="Your password" type="password">
+		<div class="actions">
+			<input class="btn" name="commit" value="Enter" type="submit">
+		</div>
+    </form>
+    
+    <!--<div id="owner">Are you the store owner? <a href="http://salontaj-2.myshopify.com/admin" class="text-link">Log in here</a> or <a href="http://salontaj-2.myshopify.com/admin/online_store/preferences?tutorial=unlock">change your password settings</a></div>--> 
+  </div>
+</div>
+</div>
+
+<script>
+$( document ).ready(function() {
+  $( "#open-me" ).click(function() {
+      $( ".overlay" ).addClass('overlay-open');
+      $("#password").focus();
+    });
+  
+  $( ".close-me" ).click(function() {
+    $( ".overlay" ).removeClass( 'overlay-open' ); 
+  });
+});
+</script>
+
+  
+</body></html>

@@ -1,0 +1,51 @@
+<div class="main-content">
+    <div id="footer_left">
+        <span id="network-availability" class="network-online" onclick="toggleOfflineMode()"><input type="hidden" id="network-status" value="online"></span>
+        <span id="network-status-label">Online</span>
+        | <span id="cashier_name"><?php echo Mage::getSingleton('admin/session')->getUser()->getName(); ?></span>
+        | <span id="store-name"><?php echo Mage::app()->getStore()->getName(); ?></span>
+        <?php if (Mage::getStoreConfig('xpos/general/enable_till') == 1) { ?> | <?php echo $this->__("Till") ?> <span
+            id="till_name"><?php echo $this->__("Default") ?></span><?php } ?>
+        <?php if (Mage::helper('xpos')->isWarehouseIntegrate() == 1) { ?> | <span
+            id="warehouse_name"><?php echo $this->__("Default") ?></span><?php } ?>
+        | <?php echo $this->__("Quote") ?> <?php echo Mage::getSingleton('adminhtml/sales_order_create')->getQuote()->getId(); ?>
+        <span id="customers-status"></span>
+        <span id="status"></span>
+    </div>
+    <div id="footer_center" style="margin-left: 20px;float:left">
+        
+    </div>
+    <div id="footer_right">
+        <?php echo date("d/m/Y", time()); ?> - <span
+            id="time-live"><?php echo date('g:i', time()); ?></span> <span id="day-time"><?php echo date('A', time()); ?></span></p>
+    </div>
+</div>
+<script>
+
+    jQuery( document ).ready(function() {
+        startTime();
+    });
+
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+
+        var ampm = h >= 12 ? 'PM' : 'AM';
+        jQuery('#day-time').html(ampm);
+
+        h = h % 12;
+        h = h ? h : 12; // the hour '0' should be '12'
+        m = m < 10 ? '0' + m : m;
+
+        jQuery('#time-live').html(h + ":" + m);
+        t = setTimeout(function () {
+            startTime()
+        }, 500);
+
+    }
+
+    flag_reload_page = 1;
+
+</script>

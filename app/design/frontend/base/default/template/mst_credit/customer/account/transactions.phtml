@@ -1,0 +1,41 @@
+<?php
+$_balance = $this->getBalance();
+$_transactions = $this->getTransactionCollection();
+?>
+
+<div class="fieldset">
+    <h2 class="legend"><?php echo Mage::helper('credit')->__('Transactions History') ?></h2>
+    <div>
+        <?php if ($_transactions->count()): ?>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th><?php echo Mage::helper('credit')->__('Balance') ?></th>
+                        <th><?php echo Mage::helper('credit')->__('Balance Change') ?></th>
+                        <th><?php echo Mage::helper('credit')->__('Action') ?></th>
+                        <th><?php echo Mage::helper('credit')->__('Comment') ?></th>
+                        <th><?php echo Mage::helper('credit')->__('Created At') ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php $_odd = 0 ?>
+                <?php foreach ($_transactions as $_transaction): ?>
+                    <tr class="<?php echo ++$_odd % 2 ? 'odd' : 'even' ?> <?php echo $_transactions->getLastItem() == $_transaction ? 'last' : '' ?>">
+                        <td><?php echo Mage::helper('core')->currency($_transaction->getBalanceAmount()) ?></td>
+                        <td>
+                            <span style="color: <?php echo $_transaction->getBalanceDelta() > 0 ? '#0a0' : '#f00' ?>">
+                                <?php echo Mage::helper('core')->currency($_transaction->getBalanceDelta()) ?>
+                            </span>
+                        </td>
+                        <td><?php echo $_transaction->getActionLabel() ?></td>
+                        <td><?php echo $_transaction->getFrontendMessage() ?></td>
+                        <td class="last" nowrap><?php echo Mage::helper('core')->formatDate($_transaction->getCreatedAt(), 'medium', true) ?></td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <p><?php echo Mage::helper('credit')->__('There are no transactions yet.') ?></p>
+        <?php endif ?>
+    </div>
+</div>

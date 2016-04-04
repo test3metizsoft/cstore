@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_metizsoft_reports_cityreport>
+        <reference name="content">
+            <block type="metizsoft_reports/adminhtml_cityreport" template="report/grid/container.phtml" name="metizsoft_reports_cityreport_grid_container">
+                <block type="metizsoft_reports/adminhtml_filter_formcity" name="grid.filter.form" />
+            </block>
+        </reference>
+    </adminhtml_metizsoft_reports_cityreport>
+    <adminhtml_metizsoft_reports_countyreport>
+        <reference name="content">
+            <block type="metizsoft_reports/adminhtml_countyreport" template="report/grid/container.phtml" name="metizsoft_reports_countyreport_grid_container">
+                <block type="metizsoft_reports/adminhtml_filter_formcounty" name="grid.filter.form" />
+            </block>
+        </reference>
+    </adminhtml_metizsoft_reports_countyreport>
+     <adminhtml_metizsoft_reports_statereport>
+        <reference name="content">
+            <block type="metizsoft_reports/adminhtml_statereport" template="report/grid/container.phtml" name="metizsoft_reports_statereport_grid_container">
+                <block type="metizsoft_reports/adminhtml_filter_formstate" name="grid.filter.form" />
+            </block>
+        </reference>
+    </adminhtml_metizsoft_reports_statereport>
+</layout>

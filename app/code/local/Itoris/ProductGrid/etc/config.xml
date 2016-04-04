@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Itoris_ProductGrid>
+            <version>1.0.24</version>
+        </Itoris_ProductGrid>
+    </modules>
+
+    <admin>
+        <routers>
+            <itoris_productgrid>
+                <use>admin</use>
+                <args>
+                    <module>Itoris_ProductGrid</module>
+                    <frontName>itoris_productgrid</frontName>
+                </args>
+            </itoris_productgrid>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <itoris_productgrid>
+                    <file>itoris_productgrid.xml</file>
+                </itoris_productgrid>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Itoris_ProductGrid>
+                    <files>
+                        <default>Itoris_ProductGrid.csv</default>
+                    </files>
+                </Itoris_ProductGrid>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <global>
+        <blocks>
+            <itoris_productgrid>
+                <class>Itoris_ProductGrid_Block</class>
+            </itoris_productgrid>
+            <adminhtml>
+                <rewrite>
+                    <!--<catalog_product_grid>Itoris_ProductGrid_Block_Admin_Catalog_Product_Grid</catalog_product_grid>-->
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        <models>
+            <itoris_productgrid>
+                <class>Itoris_ProductGrid_Model</class>
+                <resourceModel>itoris_productgrid_mysql4</resourceModel>
+            </itoris_productgrid>
+            <itoris_productgrid_mysql4>
+                <class>Itoris_ProductGrid_Model_Mysql4</class>
+                <entities>
+                    <admin>
+                        <table>itoris_productgrid_admin</table>
+                    </admin>
+                </entities>
+            </itoris_productgrid_mysql4>
+        </models>
+        <helpers>
+            <itoris_productgrid>
+                <class>Itoris_ProductGrid_Helper</class>
+            </itoris_productgrid>
+        </helpers>
+        <resources>
+            <itoris_productgrid_setup>
+                <setup>
+                    <module>Itoris_ProductGrid</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </itoris_productgrid_setup>
+
+            <itoris_productgrid_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </itoris_productgrid_write>
+
+            <itoris_productgrid_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </itoris_productgrid_read>
+        </resources>
+    </global>
+</config>

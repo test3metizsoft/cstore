@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_Pdfinvoiceplus
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<config>
+    <modules>
+        <Magestore_Pdfinvoiceplus>
+            <version>0.2.0</version>
+        </Magestore_Pdfinvoiceplus>
+    </modules>
+    <frontend>
+        <routers>
+            <pdfinvoiceplus>
+                <use>standard</use>
+                <args>
+                    <module>Magestore_Pdfinvoiceplus</module>
+                    <frontName>pdfinvoiceplus</frontName>
+                </args>
+            </pdfinvoiceplus>
+        </routers>
+        <layout>
+            <updates>
+                <pdfinvoiceplus>
+                    <file>pdfinvoiceplus.xml</file>
+                </pdfinvoiceplus>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magestore_Pdfinvoiceplus>
+                    <files>
+                        <default>Magestore_Pdfinvoiceplus.csv</default>
+                    </files>
+                </Magestore_Pdfinvoiceplus>
+            </modules>
+        </translate>
+    </frontend>
+    <admin>
+        <routers>
+            <pdfinvoiceplusadmin>
+                <use>admin</use>
+                <args>
+                    <module>Magestore_Pdfinvoiceplus</module>
+                    <frontName>pdfinvoiceplusadmin</frontName>
+                </args>
+            </pdfinvoiceplusadmin>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <pdfinvoiceplus>
+                    <file>pdfinvoiceplus.xml</file>
+                </pdfinvoiceplus>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magestore_Pdfinvoiceplus>
+                    <files>
+                        <default>Magestore_Pdfinvoiceplus.csv</default>
+                    </files>
+                </Magestore_Pdfinvoiceplus>
+            </modules>
+        </translate>
+        <events>
+<!--            <core_block_abstract_prepare_layout_before>
+                <observers>
+                    <pdfinvoiceplus_core_block_abstract_prepare_layout_before>
+                        <class>pdfinvoiceplus/observer</class>
+                        <method>addMassAction</method>
+                    </pdfinvoiceplus_core_block_abstract_prepare_layout_before>
+                </observers>
+            </core_block_abstract_prepare_layout_before>-->
+            <!--event Sync infomation template-->
+            <pdfinvoiceplus_template_save_before>
+                <observers>
+                    <pdfinvoiceplus_template_sync>
+                        <type>singleton</type>
+                        <class>pdfinvoiceplus/syncInfo</class>
+                        <method>updateBarcodeBefore</method>
+                    </pdfinvoiceplus_template_sync>
+                </observers>
+            </pdfinvoiceplus_template_save_before>
+            <pdfinvoiceplus_template_save_after>
+                <observers>
+                    <pdfinvoiceplus_template_sync>
+                        <type>singleton</type>
+                        <class>pdfinvoiceplus/syncInfo</class>
+                        <method>updateBarcode</method>
+                    </pdfinvoiceplus_template_sync>
+                </observers>
+            </pdfinvoiceplus_template_save_after>
+            <!-- add By Jack -->
+            <adminhtml_block_html_before>
+                <observers>
+                    <pdfinvoiceplus_observer>
+                        <class>pdfinvoiceplus/observer</class>
+                        <method>orderManagerObserver</method>
+                    </pdfinvoiceplus_observer>
+                </observers>
+            </adminhtml_block_html_before>
+            <!-- end add -->
+        </events>
+    </adminhtml>   
+    <global>
+        <models>
+            <pdfinvoiceplus>
+                <class>Magestore_Pdfinvoiceplus_Model</class>
+                <resourceModel>pdfinvoiceplus_mysql4</resourceModel>
+            </pdfinvoiceplus>
+            <pdfinvoiceplus_mysql4>
+                <class>Magestore_Pdfinvoiceplus_Model_Mysql4</class>
+                <entities>
+                    <template>
+                        <table>pdfinvoiceplus_template</table>
+                    </template>
+                    <systemtemplate>
+                        <table>pdfinvoiceplus_system_template</table>
+                    </systemtemplate>
+                </entities>
+            </pdfinvoiceplus_mysql4>
+            <sales>
+                <rewrite>
+                    <!--<order>Magestore_Pdfinvoiceplus_Model_Sales_Order</order>-->
+                    <order_invoice>Magestore_Pdfinvoiceplus_Model_Sales_Order_Invoice</order_invoice>
+                    <!--<order_creditmemo>Magestore_Pdfinvoiceplus_Model_Sales_Order_Creditmemo</order_creditmemo>-->
+                </rewrite>
+            </sales>
+            <core>
+                <rewrite>
+                    <email_template>Magestore_Pdfinvoiceplus_Model_Email_Template</email_template>
+                    <email_template_mailer>Magestore_Pdfinvoiceplus_Model_Email_Template_Mailer</email_template_mailer>
+                </rewrite>
+            </core>
+        </models>
+        <resources>
+            <pdfinvoiceplus_setup>
+                <setup>
+                    <module>Magestore_Pdfinvoiceplus</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </pdfinvoiceplus_setup>
+            <pdfinvoiceplus_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </pdfinvoiceplus_write>
+            <pdfinvoiceplus_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </pdfinvoiceplus_read>
+        </resources>
+        <blocks>
+            <pdfinvoiceplus>
+                <class>Magestore_Pdfinvoiceplus_Block</class>
+            </pdfinvoiceplus>
+            <adminhtml>
+                <rewrite>
+                    <!--sales_order_invoice_view>Magestore_Pdfinvoiceplus_Block_Adminhtml_Sales_Order_Invoice_View</sales_order_invoice_view>
+                    <sales_invoice_grid>Magestore_Pdfinvoiceplus_Block_Adminhtml_Sales_Invoice_Grid</sales_invoice_grid>
+                    <sales_order_creditmemo_view>Magestore_Pdfinvoiceplus_Block_Adminhtml_Sales_Order_Creditmemo_View</sales_order_creditmemo_view>
+                    <sales_creditmemo_grid>Magestore_Pdfinvoiceplus_Block_Adminhtml_Sales_Creditmemo_Grid</sales_creditmemo_grid>
+                    <sales_order_view>Magestore_Pdfinvoiceplus_Block_Adminhtml_Sales_Order_View</sales_order_view>
+                    <sales_order_grid>Magestore_Pdfinvoiceplus_Block_Adminhtml_Sales_Order_Grid</sales_order_grid-->
+                    <widget_form_renderer_fieldset>Magestore_Pdfinvoiceplus_Block_Adminhtml_Pdfinvoiceplus_Widget_Form_Renderer_Fieldset</widget_form_renderer_fieldset>
+                </rewrite>
+            </adminhtml>
+            <sales>
+                <rewrite>
+                    <order_info_buttons>Magestore_Pdfinvoiceplus_Block_Sales_Order_Info_Buttons</order_info_buttons>
+                    <order_creditmemo_items>Magestore_Pdfinvoiceplus_Block_Sales_Order_Creditmemo_Items</order_creditmemo_items>
+                    <order_invoice_items>Magestore_Pdfinvoiceplus_Block_Sales_Order_Invoice_Items</order_invoice_items>
+                </rewrite>
+            </sales>
+        </blocks>
+        <helpers>
+            <pdfinvoiceplus>
+                <class>Magestore_Pdfinvoiceplus_Helper</class>
+            </pdfinvoiceplus>
+        </helpers>
+        <!-- <events>
+            <controller_action_predispatch>
+                <observers>
+                    <pdfinvoiceplus_observers>
+                        <class>pdfinvoiceplus/observer</class>
+                        <method>controllerActionPredispatch</method>
+                    </pdfinvoiceplus_observers>
+                </observers>
+            </controller_action_predispatch>
+        </events> -->
+    </global>
+    <default>
+        <pdfinvoiceplus>
+            <general>
+                <enable>1</enable>
+                <use_multistore>0</use_multistore>
+                <attach_to_email>0</attach_to_email>
+                <page_numbering>0</page_numbering>
+                <remove_print_default>0</remove_print_default>
+            </general>
+        </pdfinvoiceplus>
+    </default>
+</config>
